@@ -1,10 +1,12 @@
-import React from 'react'
 
-import Button from '@mui/material/Button';
+import React from 'react'
+import Header from '../components/Header';
+import Books from '../components/Books';
 
 const Home = () => (
     <div>
-        <Button variant="contained">Home page</Button>
+        <Header />
+        <Books />
     </div>
 )
 export default Home;
