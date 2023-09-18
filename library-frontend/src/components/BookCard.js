@@ -17,23 +17,17 @@ const BookCard = ({ book }) => {
           <Typography variant="body2" color="text.secondary">
             Author: {book.author_name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Publisher : {book.publisher_name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Copies Available : {book.number_of_books}
-          </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
           Detail
         </Button>
-        {book.number_of_books && (
+        {book.number_of_books ? (
           <Button size="small" color="primary">
             Get
           </Button>
-        )}
+        ): null}
       </CardActions>
     </Card>
   );
