@@ -1,45 +1,42 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Button, CardActionArea, CardActions } from "@mui/material";
 
-const BookCard = () => {
+const BookCard = ({ book }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width: 345 }}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="/book.jpeg"
-          alt="book"
-        />
+        <CardMedia component="img" height="140" image="/book.jpeg" alt="book" />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Name : Book Name
+            Name : {book.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Author: Author Name
+            Author: {book.author_name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Publisher : Publisher
+            Publisher : {book.publisher_name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Copies Available : 10
+            Copies Available : {book.number_of_books}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Get
-        </Button>
-        <Button size="small" color="primary">
           Detail
         </Button>
+        {book.number_of_books && (
+          <Button size="small" color="primary">
+            Get
+          </Button>
+        )}
       </CardActions>
     </Card>
   );
-}
+};
 
 export default BookCard;
