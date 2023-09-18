@@ -4,8 +4,11 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const BookCard = ({ book }) => {
+  const navigate = useNavigate();
+
   return (
     <Card sx={{ width: 345 }}>
       <CardActionArea>
@@ -20,7 +23,9 @@ const BookCard = ({ book }) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={()=>{
+          navigate(`/book/${book?.id}`)
+        }}>
           Detail
         </Button>
         {book.number_of_books ? (

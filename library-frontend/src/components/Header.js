@@ -7,9 +7,9 @@ import SearchBar from "./SearchBar";
 
 const Header = ({setSearchValue}) => {
   return (
-    <Box sx={{ flexGrow: 1, margin: "20px" }}>
+    <Box sx={{ flexGrow: 1, margin: "50px" }}>
       <AppBar position="static" sx={{ backgroundColor: "white" }}>
-        <Toolbar>
+        <Toolbar >
           <Typography
             variant="h6"
             noWrap
