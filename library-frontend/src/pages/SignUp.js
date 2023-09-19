@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,28 +11,39 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
+  const [formErrors, setFormErrors] = useState("");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/user/user-profile/",
-        {
-          password: data.get("password"),
-          username: data.get("username"),
-          full_name: data.get("fullname"),
-          phone: data.get("phone"),
-        }
-      );
+      if (data.get("password") === "" || data.get("username") === "") {
+        setFormErrors("Fill the required fields");
+      } else {
+        const response = await axios.post(
+          "http://127.0.0.1:8000/api/user/user-profile/",
+          {
+            password: data.get("password"),
+            username: data.get("username"),
+            full_name: data.get("fullname"),
+            phone: data.get("phone"),
+          }
+        );
 
-      console.log("Response data:", response.data);
+        console.log("Response data:", response.data);
+        alert("Account successfully created!");
+        navigate("/login");
+      }
     } catch (error) {
-      alert(error.response.data.username[0]);
+      setFormErrors(error.response.data.username);
     }
   };
 
@@ -101,6 +112,7 @@ const SignUp = () => {
                 />
               </Grid>
             </Grid>
+            {formErrors && <p sx={{ color: "red" }}>{formErrors}</p>}
             <Button
               type="submit"
               fullWidth

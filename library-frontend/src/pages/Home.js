@@ -7,7 +7,8 @@ import Books from "../components/Books";
 const Home = () => {
   const [searchValue, setSearchValue] = useState("");
   const [books, setBooks] = useState();
-  console.log(searchValue)
+  console.log(searchValue);
+
   useEffect(() => {
     axios
       .get(`http://127.0.0.1:8000/api/home/book-view-set/?name=${searchValue}`)
@@ -18,11 +19,11 @@ const Home = () => {
         console.log("Error getting data!");
         console.error("Error data: ", error);
       });
-  }, [searchValue]);
+  }, []);
 
   return (
     <div>
-      <Header setSearchValue={setSearchValue}/>
+      <Header setSearchValue={setSearchValue} />
       <Books books={books} />
     </div>
   );

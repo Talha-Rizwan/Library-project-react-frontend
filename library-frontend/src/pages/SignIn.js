@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -11,30 +11,42 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import { useNavigate } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const navigate = useNavigate();
+  const [formErrors, setFormErrors] = useState("");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/user/login/",
-        {
-          username: data.get("username"),
-          password: data.get("password"),
-        }
-      );
+      if (data.get("username") && data.get("password")) {
+        const response = await axios.post(
+          "http://127.0.0.1:8000/api/user/login/",
+          {
+            username: data.get("username"),
+            password: data.get("password"),
+          }
+        );
 
-      console.log("Response data:", response.data);
-    } catch (error) {
-      alert(error.response.data.username[0]);
+        setFormErrors(response.data.message);
+
+        if (response.data.message === "login success") {
+          localStorage.setItem("access_token", response.data.token.access);
+          localStorage.setItem("refresh_token", response.data.token.refresh);
+          navigate("/");
+        }
+      } else {
+        setFormErrors("Please fill required fields!");
+      }
+    } catch (formErrors) {
+      alert(formErrors.response.data.username[0]);
     }
   };
-
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -80,6 +92,7 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
+            {formErrors && <p sx={{ color: "red" }}>{formErrors}</p>}
             <Button
               type="submit"
               fullWidth
