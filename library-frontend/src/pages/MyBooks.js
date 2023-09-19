@@ -27,12 +27,12 @@ const MyBooks = () => {
         Authorization: `Bearer ${getAccessToken()}`,
       };
       axios
-        .get(`http://127.0.0.1:8000/api/home/user-request/`, {
+        .get(`http://127.0.0.1:8000/api/home/request-set/`, {
           headers: headers,
         })
         .then((response) => {
-          console.log("the books are : ", response.data);
-          setBooks(response.data.books);
+          setBooks(response.data);
+          console.log("the books are : ", books);
         })
         .catch((error) => {
           console.log("Error getting data!");
@@ -43,8 +43,6 @@ const MyBooks = () => {
     }
   }, []);
 
-  console.log("the token is : ", getAccessToken());
-
   return (
     <div>
       <Box sx={{ width: "100%" }}>
@@ -54,27 +52,19 @@ const MyBooks = () => {
           </Item>
           <Item>
             <h3>Issued Books</h3>
-            {!books?.issued_books.length ? (
-              <p>No Requested books</p>
-            ) : (
-              <BookList books={books?.issued_books} />
-            )}
+            <BookList books={books?.filter((book) => book.status === "A")} />
           </Item>
           <Item>
             <h3>Requested Books</h3>
-            {!books?.requested_books.length ? (
-              <p>No Requested books</p>
-            ) : (
-              <BookList books={books?.requested_books} />
-            )}
+            <BookList books={books?.filter((book) => book.status === "P")} />
+          </Item>
+          <Item>
+            <h3>Return Processing Books</h3>
+            <BookList books={books?.filter((book) => book.status === "B")} />
           </Item>
           <Item>
             <h3>Returned Books</h3>
-            {!books?.returned_books.length ? (
-              <p>No Requested books</p>
-            ) : (
-              <BookList books={books?.returned_books} />
-            )}
+            <BookList books={books?.filter((book) => book.status === "C")} />
           </Item>
         </Stack>
       </Box>
