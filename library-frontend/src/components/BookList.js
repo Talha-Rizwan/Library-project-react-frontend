@@ -19,7 +19,11 @@ const BookList = ({ books }) => {
     >
       {books?.map((book) => {
         return (
-          <BookCard key={book?.requested_book.id} book={book?.requested_book} />
+          <BookCard
+            key={book?.requested_book.id}
+            book={book?.requested_book}
+            BookStatus={book?.status}
+          />
         );
       })}
       {!books?.length && (
