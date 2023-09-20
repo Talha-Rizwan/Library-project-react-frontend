@@ -3,6 +3,7 @@ import axios from "axios";
 import { getAccessToken, isTokenVaild } from "../utils/authUtils";
 import { useNavigate } from "react-router-dom";
 import BookList from "../components/BookList";
+import Typography from "@mui/material/Typography";
 
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -45,25 +46,37 @@ const MyBooks = () => {
 
   return (
     <div>
-      <Box sx={{ width: "100%" }}>
-        <Stack spacing={2} direction="column" alignItems="center">
+      <Box>
+        <Stack spacing={10} direction="column" alignItems="center">
+          <Typography
+            variant="h2"
+            gutterBottom
+            sx={{ color: "blue", textDecoration: "underline" }}
+          >
+            My Books
+          </Typography>
           <Item>
-            <h1>My Books</h1>
-          </Item>
-          <Item>
-            <h3>Issued Books</h3>
+            <Typography variant="h3" gutterBottom>
+              Issued Books
+            </Typography>
             <BookList books={books?.filter((book) => book.status === "A")} />
           </Item>
           <Item>
-            <h3>Requested Books</h3>
+            <Typography variant="h3" gutterBottom>
+              Requested Books
+            </Typography>
             <BookList books={books?.filter((book) => book.status === "P")} />
           </Item>
           <Item>
-            <h3>Return Processing Books</h3>
+            <Typography variant="h3" gutterBottom>
+              Return Pending Books
+            </Typography>
             <BookList books={books?.filter((book) => book.status === "B")} />
           </Item>
           <Item>
-            <h3>Returned Books</h3>
+            <Typography variant="h3" gutterBottom>
+              Returned Books
+            </Typography>
             <BookList books={books?.filter((book) => book.status === "C")} />
           </Item>
         </Stack>

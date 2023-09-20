@@ -23,16 +23,20 @@ const BookCard = ({ book }) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={()=>{
-          navigate(`/book/${book?.id}`)
-        }}>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {
+            navigate(`/book/${book?.id}`);
+          }}
+        >
           Detail
         </Button>
         {book.number_of_books ? (
           <Button size="small" color="primary">
             Get
           </Button>
-        ): null}
+        ) : null}
       </CardActions>
     </Card>
   );

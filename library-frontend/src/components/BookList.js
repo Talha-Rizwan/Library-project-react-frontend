@@ -1,40 +1,25 @@
 import * as React from "react";
-import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
-import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
-import { useNavigate } from "react-router-dom";
+import BookCard from "./BookCard";
+import { Stack } from "@mui/material";
 
 const BookList = ({ books }) => {
-  const navigate = useNavigate();
-
   return (
-    <List
-      sx={{
-        width: "100%",
-        maxWidth: 360,
-        bgcolor: "background.paper",
-        textAlign: "center",
-      }}
+    <Stack
+      useFlexGap
+      flexWrap="wrap"
+      direction={{ xs: "column", sm: "row" }}
+      spacing={{ xs: 1, sm: 2, md: 4 }}
+      justifyContent="center"
+      alignItems="center"
     >
       {books?.map((book) => {
         return (
-          <ListItem
-            sx={{ cursor: "pointer" }}
-            onClick={() => {
-              navigate(`/book/${book?.requested_book.id}`);
-            }}
-          >
-            <ListItemAvatar>
-              <Avatar>
-                <AutoStoriesIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={book.requested_book.name} />
-          </ListItem>
+          <BookCard key={book?.requested_book.id} book={book?.requested_book} />
         );
       })}
       {!books?.length && (
@@ -47,7 +32,7 @@ const BookList = ({ books }) => {
           <ListItemText primary="No books to show" />
         </ListItem>
       )}
-    </List>
+    </Stack>
   );
 };
 
