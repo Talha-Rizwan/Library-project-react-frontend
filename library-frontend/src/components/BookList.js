@@ -7,7 +7,7 @@ import AcUnitIcon from "@mui/icons-material/AcUnit";
 import BookCard from "./BookCard";
 import { Stack } from "@mui/material";
 
-const BookList = ({ books }) => {
+const BookList = ({ books, userBooks }) => {
   return (
     <Stack
       useFlexGap
@@ -23,6 +23,7 @@ const BookList = ({ books }) => {
             key={book?.requested_book.id}
             book={book?.requested_book}
             BookStatus={book?.status}
+            userBooks={userBooks}
           />
         );
       })}

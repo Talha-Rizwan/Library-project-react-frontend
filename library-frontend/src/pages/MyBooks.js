@@ -59,7 +59,7 @@ const MyBooks = () => {
             <Typography variant="h3" gutterBottom>
               Issued Books
             </Typography>
-            <BookList books={books?.filter((book) => book.status === "A")} />
+            <BookList books={books?.filter((book) => book.status === "A")} userBooks={books}/>
           </Item>
           <Item>
             <Typography variant="h3" gutterBottom>

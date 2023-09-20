@@ -21,7 +21,6 @@ const BookCard = ({ book, userBooks, BookStatus }) => {
     }
   });
 
-  console.log("the user books are : ", userBooks);
 
   function return_id(BookId) {
     let req = userBooks.filter(
@@ -88,6 +87,8 @@ const BookCard = ({ book, userBooks, BookStatus }) => {
             Request Book
           </Button>
         )}
+
+        {/* {!status && !book.number_of_books ? (<p>No copies available</p>) : null} */}
 
         {status === "A" && (
           <Button
