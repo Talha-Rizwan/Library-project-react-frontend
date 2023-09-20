@@ -9,22 +9,34 @@ import BookDetail from "./components/BookDetail";
 import MyBooks from "./pages/MyBooks";
 import NavBar from "./components/NavBar";
 import UpdateProfile from "./pages/UpdateProfile";
-
+import { isTokenVaild } from "./utils/authUtils";
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      {isTokenVaild() ? 
+      (<BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="/signup/" element={<SignUp />} />
-          <Route path="/login/" element={<SignIn />} />
           <Route path="/update/" element={<UpdateProfile />} />
           <Route path="/" element={<Home />} />
           <Route path="/book/:id" element={<BookDetail />} />
           <Route path="/mybooks" element={<MyBooks />} />
           <Route path="/*" element={<h1>error 404 the page is not found</h1>} />
         </Routes>
+      </BrowserRouter>)
+      :
+      (
+        <BrowserRouter>
+        <Routes>
+          <Route path="/signup/" element={<SignUp />} />
+          <Route path="/login/" element={<SignIn />} />
+          <Route path="/*" element={<h1>error 404 the page is not found</h1>} />
+        </Routes>
+        
       </BrowserRouter>
+      )
+
+}
     </div>
   );
 }

@@ -54,12 +54,12 @@ export const isTokenVaild = () => {
       refreshJwtToken(refreshToken)
         .then((newAccessToken) => {
           localStorage.setItem("access_token", newAccessToken);
+          return true;
         })
         .catch((error) => {
           console.error("Token refresh error:", error);
           return false;
         });
-      return true;
     }
     console.error("Refresh token not found");
     redirect("/login");
