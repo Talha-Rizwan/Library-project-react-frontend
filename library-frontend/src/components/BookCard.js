@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { getAccessToken, isTokenVaild } from "../utils/authUtils";
 import axios from "axios";
 
-const BookCard = ({ book, userBooks, BookStatus }) => {
+const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
   const navigate = useNavigate();
   let status = BookStatus;
   let myBook = userBooks?.filter(
@@ -21,13 +21,12 @@ const BookCard = ({ book, userBooks, BookStatus }) => {
     }
   });
 
-
-  function return_id(BookId) {
+  const return_id = (BookId) => {
     let req = userBooks.filter(
       (request) => request.requested_book.id === BookId
     );
     return req[0]?.id;
-  }
+  };
 
   return (
     <Card sx={{ width: 345 }}>
@@ -77,6 +76,7 @@ const BookCard = ({ book, userBooks, BookStatus }) => {
                   )
                   .then((response) => {
                     console.log("Request Book successful:", response.data);
+                    setRerender((prev) => !prev);
                   })
                   .catch((error) => {
                     console.error("Error requesting book:", error);
@@ -87,8 +87,6 @@ const BookCard = ({ book, userBooks, BookStatus }) => {
             Request Book
           </Button>
         )}
-
-        {/* {!status && !book.number_of_books ? (<p>No copies available</p>) : null} */}
 
         {status === "A" && (
           <Button
@@ -119,6 +117,7 @@ const BookCard = ({ book, userBooks, BookStatus }) => {
                       "Return Book request successful:",
                       response.data
                     );
+                    setRerender((prev) => !prev);
                   })
                   .catch((error) => {
                     console.error("Error returning book:", error);
@@ -155,6 +154,7 @@ const BookCard = ({ book, userBooks, BookStatus }) => {
                   )
                   .then((response) => {
                     console.log("Request Book successful:", response.data);
+                    setRerender((prev) => !prev);
                   })
                   .catch((error) => {
                     console.error("Error re-requesting book:", error);

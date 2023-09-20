@@ -2,7 +2,7 @@ import * as React from "react";
 import Stack from "@mui/material/Stack";
 import BookCard from "./BookCard";
 
-const Books = ({ books, userBooks }) => (
+const Books = ({ books, userBooks, setRerender }) => (
   <Stack
     useFlexGap
     flexWrap="wrap"
@@ -12,7 +12,12 @@ const Books = ({ books, userBooks }) => (
     alignItems="center"
   >
     {books?.map((book) => (
-      <BookCard key={book.id} book={book} userBooks={userBooks} />
+      <BookCard
+        key={book.id}
+        book={book}
+        userBooks={userBooks}
+        setRerender={setRerender}
+      />
     ))}
   </Stack>
 );

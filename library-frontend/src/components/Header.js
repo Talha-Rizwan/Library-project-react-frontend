@@ -20,7 +20,7 @@ const Header = ({setSearchValue}) => {
               color: "black",
             }}
           >
-            LIBRARY SYSTEM
+            Books
           </Typography>
           <SearchBar setSearchValue={setSearchValue}/>
         </Toolbar>

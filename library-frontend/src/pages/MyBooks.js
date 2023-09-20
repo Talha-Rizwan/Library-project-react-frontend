@@ -21,6 +21,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const MyBooks = () => {
   const navigate = useNavigate();
   const [books, setBooks] = useState(null);
+  const [rerender, setRerender] = useState(false);
 
   useEffect(() => {
     if (isTokenVaild()) {
@@ -42,7 +43,7 @@ const MyBooks = () => {
     } else {
       navigate("/login");
     }
-  }, []);
+  }, [rerender]);
 
   return (
     <div>
@@ -59,25 +60,38 @@ const MyBooks = () => {
             <Typography variant="h3" gutterBottom>
               Issued Books
             </Typography>
-            <BookList books={books?.filter((book) => book.status === "A")} userBooks={books}/>
+            <BookList
+              books={books?.filter((book) => book.status === "A")}
+              userBooks={books}
+              setRerender={setRerender}
+            />
           </Item>
           <Item>
             <Typography variant="h3" gutterBottom>
               Requested Books
             </Typography>
-            <BookList books={books?.filter((book) => book.status === "P")} />
+            <BookList
+              books={books?.filter((book) => book.status === "P")}
+              setRerender={setRerender}
+            />
           </Item>
           <Item>
             <Typography variant="h3" gutterBottom>
               Return Pending Books
             </Typography>
-            <BookList books={books?.filter((book) => book.status === "B")} />
+            <BookList
+              books={books?.filter((book) => book.status === "B")}
+              setRerender={setRerender}
+            />
           </Item>
           <Item>
             <Typography variant="h3" gutterBottom>
               Returned Books
             </Typography>
-            <BookList books={books?.filter((book) => book.status === "C")} />
+            <BookList
+              books={books?.filter((book) => book.status === "C")}
+              setRerender={setRerender}
+            />
           </Item>
         </Stack>
       </Box>

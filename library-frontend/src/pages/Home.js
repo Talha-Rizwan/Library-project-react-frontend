@@ -10,6 +10,7 @@ const Home = () => {
   const [searchValue, setSearchValue] = useState("");
   const [books, setBooks] = useState();
   const [userBooks, setUserBooks] = useState();
+  const [rerender, setRerender] = useState(false);
 
   const navigate = useNavigate();
 
@@ -44,14 +45,14 @@ const Home = () => {
     } else {
       navigate("/login");
     }
-  }, []);
+  }, [rerender]);
 
   console.log("the books are : ", userBooks);
 
   return (
     <div>
       <Header setSearchValue={setSearchValue} />
-      <Books books={books} userBooks={userBooks} />
+      <Books books={books} userBooks={userBooks} setRerender={setRerender} />
     </div>
   );
 };
