@@ -7,8 +7,9 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import DeleteModal from "./DeleteModal";
+import EditModal from "./EditModal";
 
-const LibrarianBookCard = ({ book }) => {
+const LibrarianBookCard = ({ book, setReRender }) => {
   const navigate = useNavigate();
   
   return (
@@ -34,43 +35,9 @@ const LibrarianBookCard = ({ book }) => {
         >
           Detail
         </Button>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => {
-            
-          }}
-        >
-          Edit
-        </Button>
-        {/* <Button
-          size="small"
-          color="primary"
-          onClick={() => {
-            if (isTokenVaild()) {
-                const headers = {
-                  Authorization: `Bearer ${getAccessToken()}`,
-                };
-  
-                axios
-                  .delete(
-                    `http://127.0.0.1:8000/api/home/book-view-set/${book?.id}/`,
-                    {
-                      headers: headers,
-                    }
-                  )
-                  .then((response) => {
-                    console.log("Request update successful: ", response.data);
-                  })
-                  .catch((error) => {
-                    console.error("Error updating status: ", error);
-                  });
-              }
-          }}
-        >
-          Delete
-        </Button> */}
-        <DeleteModal id={book?.id}/>
+        <EditModal book={book} setReRender={setReRender}/>
+        
+        <DeleteModal id={book?.id} setReRender={setReRender}/>
       </CardActions>
     </Card>
   );

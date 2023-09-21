@@ -18,7 +18,7 @@ const style = {
   p: 4,
 };
 
-const DeleteModal = ({ id }) => {
+const DeleteModal = ({ id, setReRender }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -54,6 +54,7 @@ const DeleteModal = ({ id }) => {
                   )
                   .then((response) => {
                     console.log("delete successful: ", response.data);
+                    setReRender((prev) => !prev);
                   })
                   .catch((error) => {
                     console.error("Error deleting: ", error);

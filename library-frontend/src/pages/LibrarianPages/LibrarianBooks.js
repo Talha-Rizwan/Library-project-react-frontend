@@ -5,10 +5,12 @@ import { Stack } from "@mui/material";
 import Header from "../../components/Header";
 import { isTokenVaild } from "../../utils/authUtils";
 import LibrarianBookCard from "../../components/librarian/LibrarianBookCard";
+import AddModal from "../../components/librarian/AddModal";
 
 const LibrarianBooks = () => {
   const [searchValue, setSearchValue] = useState("");
   const [books, setBooks] = useState();
+  const [reRender, setReRender] = useState(false)
 
   useEffect(() => {
     axios
@@ -20,13 +22,14 @@ const LibrarianBooks = () => {
         console.log("Error getting data!");
         console.error("Error data: ", error);
       });
-  }, [searchValue]);
+  }, [searchValue, reRender]);
 
   return (
     <div>
       {isTokenVaild() && (
         <div>
           <Header setSearchValue={setSearchValue} />
+          <AddModal setReRender={setReRender}/>
           <Stack
             useFlexGap
             flexWrap="wrap"
@@ -36,7 +39,7 @@ const LibrarianBooks = () => {
             alignItems="center"
           >
             {books?.map((book) => (
-              <LibrarianBookCard key={book.id} book={book} />
+              <LibrarianBookCard key={book.id} book={book} setReRender={setReRender} />
             ))}
           </Stack>
         </div>
