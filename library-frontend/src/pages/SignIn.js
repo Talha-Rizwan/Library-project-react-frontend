@@ -38,6 +38,7 @@ export default function SignIn() {
         if (response.data.message === "login success") {
           localStorage.setItem("access_token", response.data.token.access);
           localStorage.setItem("refresh_token", response.data.token.refresh);
+          localStorage.setItem("librarian", response.data.librarian)
           navigate("/");
         }
       } else {

@@ -63,7 +63,7 @@ const SignUp = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Sign up for User
           </Typography>
           <Box
             component="form"
