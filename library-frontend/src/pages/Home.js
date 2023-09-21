@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Stack } from "@mui/material";
 
 import Header from "../components/Header";
-import Books from "../components/Books";
 import { getAccessToken, isTokenVaild } from "../utils/authUtils";
-import { useNavigate } from "react-router-dom";
+import BookCard from "../components/BookCard";
 
 const Home = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -54,11 +55,23 @@ const Home = () => {
       {isTokenVaild() && (
         <div>
           <Header setSearchValue={setSearchValue} />
-          <Books
-            books={books}
-            userBooks={userBooks}
-            setRerender={setRerender}
-          />
+          <Stack
+            useFlexGap
+            flexWrap="wrap"
+            direction={{ xs: "column", sm: "row" }}
+            spacing={{ xs: 1, sm: 2, md: 4 }}
+            justifyContent="center"
+            alignItems="center"
+          >
+            {books?.map((book) => (
+              <BookCard
+                key={book.id}
+                book={book}
+                userBooks={userBooks}
+                setRerender={setRerender}
+              />
+            ))}
+          </Stack>
         </div>
       )}
     </div>

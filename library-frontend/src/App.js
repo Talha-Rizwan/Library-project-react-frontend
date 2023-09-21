@@ -11,6 +11,7 @@ import NavBar from "./components/NavBar";
 import UpdateProfile from "./pages/UpdateProfile";
 import { isTokenVaild } from "./utils/authUtils";
 import LibrarianHome from "./pages/LibrarianPages/LibrarianHome";
+import LibrarianBooks from "./pages/LibrarianPages/LibrarianBooks";
 function App() {
   return (
     <div>
@@ -24,6 +25,9 @@ function App() {
             <Route path="/mybooks" element={<MyBooks />} />
             {/* librarian routes */}
             <Route path="/librarian/" element={<LibrarianHome />} />
+            <Route path="/librarian/books/" element={<LibrarianBooks />} />
+            <Route path="librarian/book/:id" element={<BookDetail />} />
+
             <Route
               path="/*"
               element={<h1>error 404 the page is not found</h1>}

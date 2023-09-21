@@ -37,6 +37,7 @@ const NavBar = () => {
       if (url === "/login/") {
         localStorage.setItem("access_token", null);
         localStorage.setItem("refresh_token", null);
+        localStorage.setItem("librarian", null);
       }
       navigate(url);
     }

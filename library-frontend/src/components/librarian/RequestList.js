@@ -1,10 +1,11 @@
-import * as React from "react";
+import React from "react";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import { Stack } from "@mui/material";
+
 import RequestCard from "./RequestCard";
 
 const RequestList = ({ requests, setRerender }) => (
