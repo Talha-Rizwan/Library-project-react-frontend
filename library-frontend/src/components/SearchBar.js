@@ -47,12 +47,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const SearchBar = ({setSearchValue}) => {
-
+const SearchBar = ({ setSearchValue }) => {
   return (
     <Search>
       <SearchIconWrapper>
-        <SearchIcon/>
+        <SearchIcon />
       </SearchIconWrapper>
       <StyledInputBase
         sx={{

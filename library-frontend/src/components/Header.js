@@ -5,11 +5,11 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import SearchBar from "./SearchBar";
 
-const Header = ({setSearchValue}) => {
+const Header = ({ setSearchValue }) => {
   return (
     <Box sx={{ flexGrow: 1, margin: "50px" }}>
       <AppBar position="static" sx={{ backgroundColor: "white" }}>
-        <Toolbar >
+        <Toolbar>
           <Typography
             variant="h6"
             noWrap
@@ -22,7 +22,7 @@ const Header = ({setSearchValue}) => {
           >
             Books
           </Typography>
-          <SearchBar setSearchValue={setSearchValue}/>
+          <SearchBar setSearchValue={setSearchValue} />
         </Toolbar>
       </AppBar>
     </Box>

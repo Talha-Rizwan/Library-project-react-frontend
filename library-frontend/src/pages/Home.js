@@ -48,16 +48,20 @@ const Home = () => {
   }, [rerender]);
 
   console.log("the books are : ", userBooks);
-  console.log(isTokenVaild())
+  console.log(isTokenVaild());
   return (
     <div>
-      {isTokenVaild() && <div>
-        <Header setSearchValue={setSearchValue} />
-      <Books books={books} userBooks={userBooks} setRerender={setRerender} />
-        </div>}
-      
+      {isTokenVaild() && (
+        <div>
+          <Header setSearchValue={setSearchValue} />
+          <Books
+            books={books}
+            userBooks={userBooks}
+            setRerender={setRerender}
+          />
+        </div>
+      )}
     </div>
-  
   );
 };
 

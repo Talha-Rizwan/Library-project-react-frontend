@@ -1,17 +1,17 @@
-import React, {useState} from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -26,19 +26,19 @@ const NavBar = () => {
   };
 
   const handleCloseNavMenu = (url) => {
-    if(url){
-      navigate(url)
+    if (url) {
+      navigate(url);
     }
     setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = (url) => {
-    if(url){
-      if(url === '/login/'){
+    if (url) {
+      if (url === "/login/") {
         localStorage.setItem("access_token", null);
         localStorage.setItem("refresh_token", null);
       }
-      navigate(url)
+      navigate(url);
     }
     setAnchorElUser(null);
   };
@@ -54,18 +54,18 @@ const NavBar = () => {
             href="/"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             Library
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -80,18 +80,18 @@ const NavBar = () => {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={() => handleCloseNavMenu()}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
               <MenuItem onClick={() => handleCloseNavMenu("/")}>
@@ -109,32 +109,30 @@ const NavBar = () => {
             href="/"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             Library
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            
-              <Button
-                onClick={() => handleCloseNavMenu('/')}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                Home
-              </Button>
-              <Button
-                onClick={() => handleCloseNavMenu('/mybooks/')}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                My Books
-              </Button>
-          
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Button
+              onClick={() => handleCloseNavMenu("/")}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Home
+            </Button>
+            <Button
+              onClick={() => handleCloseNavMenu("/mybooks/")}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              My Books
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -144,34 +142,32 @@ const NavBar = () => {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
               onClose={() => handleCloseUserMenu()}
             >
-              
-                <MenuItem onClick={() => handleCloseUserMenu('/update/')}>
-                  <Typography textAlign="center">Update Profile</Typography>
-                </MenuItem>
-                <MenuItem onClick={() => handleCloseUserMenu('/login/')}>
-                  <Typography textAlign="center">Logout</Typography>
-                </MenuItem>
-              
+              <MenuItem onClick={() => handleCloseUserMenu("/update/")}>
+                <Typography textAlign="center">Update Profile</Typography>
+              </MenuItem>
+              <MenuItem onClick={() => handleCloseUserMenu("/login/")}>
+                <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
-}
+};
 export default NavBar;
