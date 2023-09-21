@@ -47,29 +47,27 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const SearchBar = ({ setSearchValue }) => {
-  return (
-    <Search>
-      <SearchIconWrapper>
-        <SearchIcon />
-      </SearchIconWrapper>
-      <StyledInputBase
-        sx={{
-          border: "1px solid transparent",
-          "&:hover": {
-            border: "1px solid black",
-          },
-          "&:focus": {
-            border: "1px solid black",
-          },
-        }}
-        placeholder="Search…"
-        inputProps={{ "aria-label": "search" }}
-        // value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
-      />
-    </Search>
-  );
-};
+const SearchBar = ({ setSearchValue }) => (
+  <Search>
+    <SearchIconWrapper>
+      <SearchIcon />
+    </SearchIconWrapper>
+    <StyledInputBase
+      sx={{
+        border: "1px solid transparent",
+        "&:hover": {
+          border: "1px solid black",
+        },
+        "&:focus": {
+          border: "1px solid black",
+        },
+      }}
+      placeholder="Search…"
+      inputProps={{ "aria-label": "search" }}
+      // value={searchValue}
+      onChange={(e) => setSearchValue(e.target.value)}
+    />
+  </Search>
+);
 
 export default SearchBar;
