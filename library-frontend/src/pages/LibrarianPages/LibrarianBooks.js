@@ -10,7 +10,7 @@ import AddModal from "../../components/librarian/AddModal";
 const LibrarianBooks = () => {
   const [searchValue, setSearchValue] = useState("");
   const [books, setBooks] = useState();
-  const [reRender, setReRender] = useState(false)
+  const [reRender, setReRender] = useState(false);
 
   useEffect(() => {
     axios
@@ -29,7 +29,7 @@ const LibrarianBooks = () => {
       {isTokenVaild() && (
         <div>
           <Header setSearchValue={setSearchValue} />
-          <AddModal setReRender={setReRender}/>
+          <AddModal setReRender={setReRender} />
           <Stack
             useFlexGap
             flexWrap="wrap"
@@ -39,7 +39,11 @@ const LibrarianBooks = () => {
             alignItems="center"
           >
             {books?.map((book) => (
-              <LibrarianBookCard key={book.id} book={book} setReRender={setReRender} />
+              <LibrarianBookCard
+                key={book.id}
+                book={book}
+                setReRender={setReRender}
+              />
             ))}
           </Stack>
         </div>

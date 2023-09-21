@@ -1,17 +1,17 @@
 import React from "react";
-import axios from "axios";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
 
 const LibrarianBookCard = ({ book, setReRender }) => {
   const navigate = useNavigate();
-  
+
   return (
     <Card sx={{ width: 345 }}>
       <CardActionArea>
@@ -35,9 +35,9 @@ const LibrarianBookCard = ({ book, setReRender }) => {
         >
           Detail
         </Button>
-        <EditModal book={book} setReRender={setReRender}/>
-        
-        <DeleteModal id={book?.id} setReRender={setReRender}/>
+        <EditModal book={book} setReRender={setReRender} />
+
+        <DeleteModal id={book?.id} setReRender={setReRender} />
       </CardActions>
     </Card>
   );

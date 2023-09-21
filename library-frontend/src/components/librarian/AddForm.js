@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
+
 import { isTokenVaild, getAccessToken } from "../../utils/authUtils";
 
 const defaultTheme = createTheme();
@@ -28,27 +29,28 @@ const AddForm = ({ closeModal, setReRender }) => {
         setFormErrors("required fields cannot be empty");
       } else {
         if (isTokenVaild()) {
-            const headers = {
-              Authorization: `Bearer ${getAccessToken()}`,
-            };
-        const response = await axios.post(
-          `http://127.0.0.1:8000/api/home/book-view-set/`,
-          {
-            name: data.get("name"),
-            author_name: data.get("author_name"),
-            publisher_name: data.get("publisher_name"),
-            number_of_books: data.get("number_of_books"),
-          },{
-            headers: headers,
-          }
-        );
+          const headers = {
+            Authorization: `Bearer ${getAccessToken()}`,
+          };
+          const response = await axios.post(
+            `http://127.0.0.1:8000/api/home/book-view-set/`,
+            {
+              name: data.get("name"),
+              author_name: data.get("author_name"),
+              publisher_name: data.get("publisher_name"),
+              number_of_books: data.get("number_of_books"),
+            },
+            {
+              headers: headers,
+            }
+          );
 
-        console.log("Response data:", response.data);
-        console.log("New Book Created!");
-        setReRender((prev) => !prev);
-        closeModal()
+          console.log("Response data:", response.data);
+          console.log("New Book Created!");
+          setReRender((prev) => !prev);
+          closeModal();
+        }
       }
-    }
     } catch (error) {
       setFormErrors(error.response.data.username);
     }
