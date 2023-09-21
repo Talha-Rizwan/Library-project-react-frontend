@@ -21,6 +21,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const LibrarianHome = () => {
   const navigate = useNavigate();
   const [requests, setRequests] = useState();
+  const [rerender, setRerender] = useState(false);
 
   useEffect(() => {
     if (isTokenVaild()) {
@@ -42,7 +43,7 @@ const LibrarianHome = () => {
     } else {
       navigate("/login");
     }
-  }, []);
+  }, [rerender]);
 
   return (
     <div>
@@ -61,6 +62,7 @@ const LibrarianHome = () => {
             </Typography>
             <RequestList
               requests={requests?.filter((request) => request?.status === "P")}
+              setRerender={setRerender}
             />
           </Item>
           <Item>
@@ -69,6 +71,7 @@ const LibrarianHome = () => {
             </Typography>
             <RequestList
               requests={requests?.filter((request) => request?.status === "A")}
+              setRerender={setRerender}
             />
           </Item>
           <Item>
@@ -77,6 +80,7 @@ const LibrarianHome = () => {
             </Typography>
             <RequestList
               requests={requests?.filter((request) => request?.status === "B")}
+              setRerender={setRerender}
             />
           </Item>
           <Item>
@@ -85,6 +89,7 @@ const LibrarianHome = () => {
             </Typography>
             <RequestList
               requests={requests?.filter((request) => request?.status === "C")}
+              setRerender={setRerender}
             />
           </Item>
           <Item>
@@ -93,6 +98,7 @@ const LibrarianHome = () => {
             </Typography>
             <RequestList
               requests={requests?.filter((request) => request?.status === "R")}
+              setRerender={setRerender}
             />
           </Item>
         </Stack>
