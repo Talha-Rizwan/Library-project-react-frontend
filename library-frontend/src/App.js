@@ -12,6 +12,7 @@ import UpdateProfile from "./pages/UpdateProfile";
 import LibrarianBooks from "./pages/Librarian/LibrarianBooks";
 import UserBookRequests from "./pages/Librarian/Requests";
 import Dashboard from "./pages/Librarian/Dashboard";
+import Tickets from "./pages/Librarian/Tickets";
 
 const App = () => (
   <div>
@@ -25,6 +26,7 @@ const App = () => (
         <Route path="/mybooks" element={<MyBooks />} />
         <Route path="/librarian/" element={<Dashboard />} />
         <Route path="/librarian/requests" element={<UserBookRequests />} />
+        <Route path="/librarian/tickets" element={<Tickets />} />
         <Route path="/librarian/books/" element={<LibrarianBooks />} />
         <Route path="librarian/book/:id" element={<BookDetail />} />
         <Route path="/signup/" element={<SignUp />} />

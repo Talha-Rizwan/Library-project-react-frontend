@@ -36,3 +36,9 @@ export const REQUEST_STATUS = {
   RETURN_REQUEST_STATUS: "B",
   CLOSED_STATUS: "C",
 };
+
+export const TICKET_STATUS = {
+  PENDING_STATUS: "P",
+  APPROVED_STATUS: "A",
+  REJECTED_STATUS: "R",
+};

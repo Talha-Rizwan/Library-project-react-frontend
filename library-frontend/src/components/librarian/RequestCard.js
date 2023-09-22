@@ -39,7 +39,7 @@ const RequestCard = ({ request, setRerender }) => (
                 Authorization: `Bearer ${getAccessToken()}`,
               };
               const requestBody = {
-                status: "A",
+                status: REQUEST_STATUS.APPROVED_STATUS,
               };
 
               axios
@@ -105,7 +105,7 @@ const RequestCard = ({ request, setRerender }) => (
                 Authorization: `Bearer ${getAccessToken()}`,
               };
               const requestBody = {
-                status: "C",
+                status: REQUEST_STATUS.CLOSED_STATUS,
               };
 
               axios
