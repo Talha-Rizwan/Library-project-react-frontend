@@ -6,12 +6,19 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/material";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { isTokenVaild } from "../../utils/authUtils";
 
 const BookDetail = () => {
   const { id } = useParams();
   const [detail, setDetail] = useState({});
-  console.log(id);
+  const navigate = useNavigate();
+
   useEffect(() => {
+    if (isTokenVaild() === false) {
+      navigate("/login/");
+    }
     axios
       .get(`http://127.0.0.1:8000/api/home/book-view-set/${id}/`)
       .then((response) => {

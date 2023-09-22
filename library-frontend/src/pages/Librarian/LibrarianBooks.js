@@ -3,17 +3,24 @@ import axios from "axios";
 import { Stack } from "@mui/material";
 
 import Header from "../../components/Header";
-import { isTokenVaild } from "../../utils/authUtils";
+import { isLibrarian, isTokenVaild } from "../../utils/authUtils";
 import LibrarianBookCard from "../../components/librarian/LibrarianBookCard";
 import FormModal from "../../components/librarian/Modal";
 import { ADD_BOOK } from "../../constants";
+import { useNavigate } from "react-router-dom";
 
 const LibrarianBooks = () => {
   const [searchValue, setSearchValue] = useState("");
   const [books, setBooks] = useState();
   const [reRender, setReRender] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (isTokenVaild() === false) {
+      navigate("/login/");
+    } else if (isLibrarian() === "false") {
+      navigate("/");
+    }
     axios
       .get(`http://127.0.0.1:8000/api/home/book-view-set/?name=${searchValue}`)
       .then((response) => {

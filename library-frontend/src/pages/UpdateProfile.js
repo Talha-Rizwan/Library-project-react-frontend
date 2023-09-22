@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -21,6 +21,12 @@ const UpdateProfile = () => {
   const navigate = useNavigate();
   const [gender, setGender] = useState("");
   const [formErrors, setFormErrors] = useState("");
+
+  useEffect(() => {
+    if (isTokenVaild() === false) {
+      navigate("/login/");
+    }
+  }, []);
 
   const handleChange = (event) => {
     setGender(event.target.value);

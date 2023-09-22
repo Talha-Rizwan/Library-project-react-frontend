@@ -8,7 +8,11 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 
 import RequestList from "../../components/librarian/RequestList";
-import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
+import {
+  getAccessToken,
+  isLibrarian,
+  isTokenVaild,
+} from "../../utils/authUtils";
 import { REQUEST_STATUS } from "../../constants";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -25,7 +29,7 @@ const UserBookRequests = () => {
   const [rerender, setRerender] = useState(false);
 
   useEffect(() => {
-    if (isTokenVaild()) {
+    if (isTokenVaild() && isLibrarian() === "true") {
       const headers = {
         Authorization: `Bearer ${getAccessToken()}`,
       };
@@ -42,7 +46,7 @@ const UserBookRequests = () => {
           console.error("Error data: ", error);
         });
     } else {
-      navigate("/login");
+      navigate("/");
     }
   }, [rerender]);
 

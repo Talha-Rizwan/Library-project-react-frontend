@@ -1,7 +1,7 @@
 import axios from "axios";
 import { redirect } from "react-router-dom";
 
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
+import { ACCESS_TOKEN, REFRESH_TOKEN, LIBRARIAN_ROLE } from "../constants";
 
 export const refreshJwtToken = async (refreshToken) => {
   try {
@@ -68,4 +68,8 @@ export const isTokenVaild = () => {
     return false;
   }
   return true;
+};
+
+export const isLibrarian = () => {
+  return localStorage.getItem(LIBRARIAN_ROLE);
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,11 +12,18 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { isTokenVaild } from "../utils/authUtils";
 
 const defaultTheme = createTheme();
 
 const SignUp = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isTokenVaild() === true) {
+      navigate("/");
+    }
+  }, []);
 
   const [formErrors, setFormErrors] = useState("");
 

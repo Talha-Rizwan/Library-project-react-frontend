@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { Stack } from "@mui/material";
 
 import Header from "../../components/Header";
-import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
+import {
+  getAccessToken,
+  isTokenVaild,
+  isLibrarian,
+} from "../../utils/authUtils";
 import BookCard from "../../components/user/BookCard";
 
 const Home = () => {
@@ -28,7 +32,7 @@ const Home = () => {
   }, [searchValue]);
 
   useEffect(() => {
-    if (isTokenVaild()) {
+    if (isTokenVaild() && isLibrarian() === "false") {
       const headers = {
         Authorization: `Bearer ${getAccessToken()}`,
       };
@@ -43,6 +47,8 @@ const Home = () => {
           console.log("Error getting data!");
           console.error("Error data: ", error);
         });
+    } else if (isLibrarian() === "true") {
+      navigate("/librarian/");
     } else {
       navigate("/login");
     }
