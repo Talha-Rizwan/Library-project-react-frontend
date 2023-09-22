@@ -77,31 +77,62 @@ const NavBar = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={() => handleCloseNavMenu()}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              <MenuItem onClick={() => handleCloseNavMenu("/")}>
-                <Typography textAlign="center">Home</Typography>
-              </MenuItem>
-              <MenuItem onClick={() => handleCloseNavMenu("/mybooks/")}>
-                <Typography textAlign="center">My Books</Typography>
-              </MenuItem>
-            </Menu>
+
+            {localStorage.getItem("librarian") ? (
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={() => handleCloseNavMenu()}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                <MenuItem onClick={() => handleCloseNavMenu("/librarian")}>
+                  <Typography textAlign="center">Home</Typography>
+                </MenuItem>
+                <MenuItem
+                  onClick={() => handleCloseNavMenu("/librarian/books/")}
+                >
+                  <Typography textAlign="center">Books</Typography>
+                </MenuItem>
+              </Menu>
+            ) : (
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={() => handleCloseNavMenu()}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                <MenuItem onClick={() => handleCloseNavMenu("/")}>
+                  <Typography textAlign="center">Home</Typography>
+                </MenuItem>
+                <MenuItem onClick={() => handleCloseNavMenu("/mybooks/")}>
+                  <Typography textAlign="center">My Books</Typography>
+                </MenuItem>
+              </Menu>
+            )}
           </Box>
           <Typography
             variant="h5"
@@ -121,20 +152,37 @@ const NavBar = () => {
           >
             Library
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Button
-              onClick={() => handleCloseNavMenu("/")}
-              sx={{ my: 2, color: "white", display: "block" }}
-            >
-              Home
-            </Button>
-            <Button
-              onClick={() => handleCloseNavMenu("/mybooks/")}
-              sx={{ my: 2, color: "white", display: "block" }}
-            >
-              My Books
-            </Button>
-          </Box>
+          {localStorage.getItem("librarian") ? (
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              <Button
+                onClick={() => handleCloseNavMenu("/librarian/")}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Home
+              </Button>
+              <Button
+                onClick={() => handleCloseNavMenu("/librarian/books/")}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Books
+              </Button>
+            </Box>
+          ) : (
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              <Button
+                onClick={() => handleCloseNavMenu("/")}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Home
+              </Button>
+              <Button
+                onClick={() => handleCloseNavMenu("/mybooks/")}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                My Books
+              </Button>
+            </Box>
+          )}
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

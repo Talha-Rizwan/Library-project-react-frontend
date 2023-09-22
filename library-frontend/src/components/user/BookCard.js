@@ -7,7 +7,7 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import { getAccessToken, isTokenVaild } from "../utils/authUtils";
+import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
 
 const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
   const navigate = useNavigate();

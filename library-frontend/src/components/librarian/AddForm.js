@@ -123,7 +123,7 @@ const AddForm = ({ closeModal, setReRender }) => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Update
+              Add
             </Button>
           </Box>
         </Box>

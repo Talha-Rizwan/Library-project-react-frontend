@@ -4,14 +4,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import Home from "./pages/Home";
-import BookDetail from "./components/BookDetail";
-import MyBooks from "./pages/MyBooks";
+import Home from "./pages/user/Home";
+import BookDetail from "./components/user/BookDetail";
+import MyBooks from "./pages/user/MyBooks";
 import NavBar from "./components/NavBar";
 import UpdateProfile from "./pages/UpdateProfile";
 import { isTokenVaild } from "./utils/authUtils";
-import LibrarianHome from "./pages/LibrarianPages/LibrarianHome";
-import LibrarianBooks from "./pages/LibrarianPages/LibrarianBooks";
+import LibrarianHome from "./pages/Librarian/LibrarianHome";
+import LibrarianBooks from "./pages/Librarian/LibrarianBooks";
 function App() {
   return (
     <div>

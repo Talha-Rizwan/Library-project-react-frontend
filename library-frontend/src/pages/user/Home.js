@@ -3,9 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Stack } from "@mui/material";
 
-import Header from "../components/Header";
-import { getAccessToken, isTokenVaild } from "../utils/authUtils";
-import BookCard from "../components/BookCard";
+import Header from "../../components/Header";
+import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
+import BookCard from "../../components/user/BookCard";
 
 const Home = () => {
   const [searchValue, setSearchValue] = useState("");
