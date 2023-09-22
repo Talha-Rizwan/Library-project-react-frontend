@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Stack } from "@mui/material";
 
-import AddForm from "./AddForm";
+import Form from "./Form";
 
 const style = {
   position: "absolute",
@@ -19,22 +19,14 @@ const style = {
   p: 4,
 };
 
-const AddModal = ({ setReRender }) => {
+const FormModal = ({ book, setReRender, name }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   return (
     <div>
       <Stack direction={{ xs: "column", sm: "row" }} justifyContent="center">
-        <Button
-          onClick={handleOpen}
-          variant="contained"
-          color="success"
-          sx={{ margin: "20px" }}
-        >
-          Add Book
-        </Button>
+        <Button onClick={handleOpen}>{name}</Button>
       </Stack>
       <Modal
         open={open}
@@ -44,7 +36,12 @@ const AddModal = ({ setReRender }) => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            <AddForm closeModal={handleClose} setReRender={setReRender} />
+            <Form
+              book={book}
+              closeModal={handleClose}
+              setReRender={setReRender}
+              name={name}
+            />
           </Typography>
           <Button size="small" color="primary" onClick={handleClose}>
             Close
@@ -55,4 +52,4 @@ const AddModal = ({ setReRender }) => {
   );
 };
 
-export default AddModal;
+export default FormModal;

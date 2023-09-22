@@ -12,7 +12,7 @@ import { isTokenVaild, getAccessToken } from "../../utils/authUtils";
 
 const defaultTheme = createTheme();
 
-const EditForm = ({ book, closeModal, setReRender }) => {
+const Form = ({ book, closeModal, setReRender, name }) => {
   const [formErrors, setFormErrors] = useState("");
 
   const handleSubmit = async (event) => {
@@ -32,21 +32,38 @@ const EditForm = ({ book, closeModal, setReRender }) => {
           const headers = {
             Authorization: `Bearer ${getAccessToken()}`,
           };
-          const response = await axios.put(
-            `http://127.0.0.1:8000/api/home/book-view-set/${book.id}/`,
-            {
-              name: data.get("name"),
-              author_name: data.get("author_name"),
-              publisher_name: data.get("publisher_name"),
-              number_of_books: data.get("number_of_books"),
-            },
-            {
-              headers: headers,
-            }
-          );
+          if (name === "Add Book") {
+            const response = await axios.post(
+              "http://127.0.0.1:8000/api/home/book-view-set/",
+              {
+                name: data.get("name"),
+                author_name: data.get("author_name"),
+                publisher_name: data.get("publisher_name"),
+                number_of_books: data.get("number_of_books"),
+              },
+              {
+                headers: headers,
+              }
+            );
+            console.log("Response data:", response.data);
+            console.log("New Book Successfully Added!");
+          } else if (name === "Update") {
+            const response = await axios.put(
+              `http://127.0.0.1:8000/api/home/book-view-set/${book.id}/`,
+              {
+                name: data.get("name"),
+                author_name: data.get("author_name"),
+                publisher_name: data.get("publisher_name"),
+                number_of_books: data.get("number_of_books"),
+              },
+              {
+                headers: headers,
+              }
+            );
+            console.log("Response data:", response.data);
+            console.log("Updated Book Information!");
+          }
 
-          console.log("Response data:", response.data);
-          console.log("Updated Book information!");
           setReRender((prev) => !prev);
           closeModal();
         }
@@ -82,7 +99,7 @@ const EditForm = ({ book, closeModal, setReRender }) => {
                   id="name"
                   label="Book Name"
                   name="name"
-                  defaultValue={book.name}
+                  defaultValue={book?.name}
                   autoComplete="name"
                 />
               </Grid>
@@ -93,7 +110,7 @@ const EditForm = ({ book, closeModal, setReRender }) => {
                   id="author_name"
                   label="Author Name"
                   name="author_name"
-                  defaultValue={book.author_name}
+                  defaultValue={book?.author_name}
                   autoComplete="author_name"
                 />
               </Grid>
@@ -104,7 +121,7 @@ const EditForm = ({ book, closeModal, setReRender }) => {
                   name="publisher_name"
                   label="Publisher"
                   id="publisher_name"
-                  defaultValue={book.publisher_name}
+                  defaultValue={book?.publisher_name}
                   autoComplete="publisher_name"
                 />
               </Grid>
@@ -115,7 +132,7 @@ const EditForm = ({ book, closeModal, setReRender }) => {
                   id="number_of_books"
                   label="Number of Copies"
                   name="number_of_books"
-                  defaultValue={book.number_of_books}
+                  defaultValue={book?.number_of_books}
                   autoComplete="number_of_books"
                 />
               </Grid>
@@ -127,7 +144,7 @@ const EditForm = ({ book, closeModal, setReRender }) => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Update
+              {name}
             </Button>
           </Box>
         </Box>
@@ -135,4 +152,4 @@ const EditForm = ({ book, closeModal, setReRender }) => {
     </ThemeProvider>
   );
 };
-export default EditForm;
+export default Form;

@@ -7,7 +7,7 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import DeleteModal from "./DeleteModal";
-import EditModal from "./EditModal";
+import FormModal from "./Modal";
 
 const LibrarianBookCard = ({ book, setReRender }) => {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const LibrarianBookCard = ({ book, setReRender }) => {
         >
           Detail
         </Button>
-        <EditModal book={book} setReRender={setReRender} />
+        <FormModal book={book} setReRender={setReRender} name="Update" />
 
         <DeleteModal id={book?.id} setReRender={setReRender} />
       </CardActions>

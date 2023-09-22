@@ -5,7 +5,7 @@ import { Stack } from "@mui/material";
 import Header from "../../components/Header";
 import { isTokenVaild } from "../../utils/authUtils";
 import LibrarianBookCard from "../../components/librarian/LibrarianBookCard";
-import AddModal from "../../components/librarian/AddModal";
+import FormModal from "../../components/librarian/Modal";
 
 const LibrarianBooks = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -29,7 +29,7 @@ const LibrarianBooks = () => {
       {isTokenVaild() && (
         <div>
           <Header setSearchValue={setSearchValue} />
-          <AddModal setReRender={setReRender} />
+          <FormModal setReRender={setReRender} name="Add Book" />
           <Stack
             useFlexGap
             flexWrap="wrap"
