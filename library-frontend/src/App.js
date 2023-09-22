@@ -10,8 +10,10 @@ import MyBooks from "./pages/user/MyBooks";
 import NavBar from "./components/NavBar";
 import UpdateProfile from "./pages/UpdateProfile";
 import { isTokenVaild } from "./utils/authUtils";
-import LibrarianHome from "./pages/Librarian/LibrarianHome";
 import LibrarianBooks from "./pages/Librarian/LibrarianBooks";
+import UserBookRequests from "./pages/Librarian/Requests";
+import Dashboard from "./pages/Librarian/Dashboard";
+
 function App() {
   return (
     <div>
@@ -24,9 +26,11 @@ function App() {
             <Route path="/book/:id" element={<BookDetail />} />
             <Route path="/mybooks" element={<MyBooks />} />
             {/* librarian routes */}
-            <Route path="/librarian/" element={<LibrarianHome />} />
+            <Route path="/librarian/" element={<Dashboard />} />
+            <Route path="/librarian/requests" element={<UserBookRequests />} />
             <Route path="/librarian/books/" element={<LibrarianBooks />} />
             <Route path="librarian/book/:id" element={<BookDetail />} />
+
 
             <Route
               path="/*"

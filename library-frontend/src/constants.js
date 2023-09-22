@@ -15,3 +15,17 @@ export const UPDATE_BOOK = "Update"
 export const ACCESS_TOKEN = "access_token"
 export const REFRESH_TOKEN = "refresh_token"
 export const LIBRARIAN_ROLE = "librarian"
+
+export const DashboardItems = [
+  {
+    name: "Requests",
+    url: "requests/",
+    description: "user book requests"
+  },
+  {
+    name: "Books",
+    url: "books/",
+    description: "all library books"
+  },
+
+]

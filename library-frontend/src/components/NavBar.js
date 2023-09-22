@@ -98,8 +98,13 @@ const NavBar = () => {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                <MenuItem onClick={() => handleCloseNavMenu("/librarian")}>
+                <MenuItem onClick={() => handleCloseNavMenu("/librarian/")}>
                   <Typography textAlign="center">Home</Typography>
+                </MenuItem>
+                <MenuItem
+                  onClick={() => handleCloseNavMenu("/librarian/requests/")}
+                >
+                  <Typography textAlign="center">Requests</Typography>
                 </MenuItem>
                 <MenuItem
                   onClick={() => handleCloseNavMenu("/librarian/books/")}
@@ -160,6 +165,12 @@ const NavBar = () => {
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 Home
+              </Button>
+              <Button
+                onClick={() => handleCloseNavMenu("/librarian/requests")}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Requests
               </Button>
               <Button
                 onClick={() => handleCloseNavMenu("/librarian/books/")}

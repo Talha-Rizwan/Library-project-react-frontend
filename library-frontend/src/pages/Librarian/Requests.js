@@ -18,7 +18,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const LibrarianHome = () => {
+const UserBookRequests = () => {
   const navigate = useNavigate();
   const [requests, setRequests] = useState();
   const [rerender, setRerender] = useState(false);
@@ -107,4 +107,4 @@ const LibrarianHome = () => {
   );
 };
 
-export default LibrarianHome;
+export default UserBookRequests;
