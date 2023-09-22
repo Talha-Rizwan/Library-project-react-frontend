@@ -31,7 +31,6 @@ function App() {
             <Route path="/librarian/books/" element={<LibrarianBooks />} />
             <Route path="librarian/book/:id" element={<BookDetail />} />
 
-
             <Route
               path="/*"
               element={<h1>error 404 the page is not found</h1>}

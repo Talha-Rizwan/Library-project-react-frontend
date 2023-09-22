@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 
+import { REQUEST_STATUS } from "../../constants";
 import { isTokenVaild, getAccessToken } from "../../utils/authUtils";
 
 const RequestCard = ({ request, setRerender }) => (
@@ -28,7 +29,7 @@ const RequestCard = ({ request, setRerender }) => (
         Status : {request?.status}
       </Typography>
     </CardContent>
-    {request?.status === "P" && (
+    {request?.status === REQUEST_STATUS.PENDING_STATUS && (
       <CardActions>
         <Button
           size="small"
@@ -69,7 +70,7 @@ const RequestCard = ({ request, setRerender }) => (
                 Authorization: `Bearer ${getAccessToken()}`,
               };
               const requestBody = {
-                status: "R",
+                status: REQUEST_STATUS.REJECTED_STATUS,
               };
 
               axios
@@ -94,7 +95,7 @@ const RequestCard = ({ request, setRerender }) => (
         </Button>
       </CardActions>
     )}
-    {request?.status === "B" && (
+    {request?.status === REQUEST_STATUS.RETURN_REQUEST_STATUS && (
       <CardActions>
         <Button
           size="small"

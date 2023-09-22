@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const DashboardCard = ({ name, url, description }) => {
   const navigate = useNavigate();
-  return ( 
+  return (
     <Box sx={{ minWidth: 275, border: "1px solid black" }}>
       <CardContent>
         <Typography variant="h5" component="div">

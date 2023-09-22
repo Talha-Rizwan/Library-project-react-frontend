@@ -9,6 +9,7 @@ import { styled } from "@mui/material/styles";
 
 import RequestList from "../../components/librarian/RequestList";
 import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
+import { REQUEST_STATUS } from "../../constants";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -61,7 +62,9 @@ const UserBookRequests = () => {
               Pending Requests
             </Typography>
             <RequestList
-              requests={requests?.filter((request) => request?.status === "P")}
+              requests={requests?.filter(
+                (request) => request?.status === REQUEST_STATUS.PENDING_STATUS
+              )}
               setRerender={setRerender}
             />
           </Item>
@@ -70,7 +73,9 @@ const UserBookRequests = () => {
               Approved Requests
             </Typography>
             <RequestList
-              requests={requests?.filter((request) => request?.status === "A")}
+              requests={requests?.filter(
+                (request) => request?.status === REQUEST_STATUS.APPROVED_STATUS
+              )}
               setRerender={setRerender}
             />
           </Item>
@@ -79,7 +84,10 @@ const UserBookRequests = () => {
               Return Requests
             </Typography>
             <RequestList
-              requests={requests?.filter((request) => request?.status === "B")}
+              requests={requests?.filter(
+                (request) =>
+                  request?.status === REQUEST_STATUS.RETURN_REQUEST_STATUS
+              )}
               setRerender={setRerender}
             />
           </Item>
@@ -88,7 +96,9 @@ const UserBookRequests = () => {
               Closed Requests
             </Typography>
             <RequestList
-              requests={requests?.filter((request) => request?.status === "C")}
+              requests={requests?.filter(
+                (request) => request?.status === REQUEST_STATUS.CLOSED_STATUS
+              )}
               setRerender={setRerender}
             />
           </Item>
@@ -97,7 +107,9 @@ const UserBookRequests = () => {
               Rejected Requests
             </Typography>
             <RequestList
-              requests={requests?.filter((request) => request?.status === "R")}
+              requests={requests?.filter(
+                (request) => request?.status === REQUEST_STATUS.REJECTED_STATUS
+              )}
               setRerender={setRerender}
             />
           </Item>

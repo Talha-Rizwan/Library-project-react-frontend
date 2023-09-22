@@ -7,6 +7,7 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 
+import { REQUEST_STATUS } from "../../constants";
 import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
 import BookList from "../../components/user/BookList";
 
@@ -61,7 +62,9 @@ const MyBooks = () => {
               Issued Books
             </Typography>
             <BookList
-              books={books?.filter((book) => book.status === "A")}
+              books={books?.filter(
+                (book) => book.status === REQUEST_STATUS.APPROVED_STATUS
+              )}
               userBooks={books}
               setRerender={setRerender}
             />
@@ -71,7 +74,9 @@ const MyBooks = () => {
               Requested Books
             </Typography>
             <BookList
-              books={books?.filter((book) => book.status === "P")}
+              books={books?.filter(
+                (book) => book.status === REQUEST_STATUS.PENDING_STATUS
+              )}
               setRerender={setRerender}
             />
           </Item>
@@ -80,7 +85,9 @@ const MyBooks = () => {
               Return Pending Books
             </Typography>
             <BookList
-              books={books?.filter((book) => book.status === "B")}
+              books={books?.filter(
+                (book) => book.status === REQUEST_STATUS.RETURN_REQUEST_STATUS
+              )}
               setRerender={setRerender}
             />
           </Item>
@@ -89,7 +96,9 @@ const MyBooks = () => {
               Returned Books
             </Typography>
             <BookList
-              books={books?.filter((book) => book.status === "C")}
+              books={books?.filter(
+                (book) => book.status === REQUEST_STATUS.CLOSED_STATUS
+              )}
               setRerender={setRerender}
             />
           </Item>
