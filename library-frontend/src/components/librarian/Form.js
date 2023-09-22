@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 
 import { isTokenVaild, getAccessToken } from "../../utils/authUtils";
+import { ADD_BOOK, UPDATE_BOOK } from "../../constants";
 
 const defaultTheme = createTheme();
 
@@ -32,7 +33,7 @@ const Form = ({ book, closeModal, setReRender, name }) => {
           const headers = {
             Authorization: `Bearer ${getAccessToken()}`,
           };
-          if (name === "Add Book") {
+          if (name === ADD_BOOK) {
             const response = await axios.post(
               "http://127.0.0.1:8000/api/home/book-view-set/",
               {
@@ -47,7 +48,7 @@ const Form = ({ book, closeModal, setReRender, name }) => {
             );
             console.log("Response data:", response.data);
             console.log("New Book Successfully Added!");
-          } else if (name === "Update") {
+          } else if (name === UPDATE_BOOK) {
             const response = await axios.put(
               `http://127.0.0.1:8000/api/home/book-view-set/${book.id}/`,
               {

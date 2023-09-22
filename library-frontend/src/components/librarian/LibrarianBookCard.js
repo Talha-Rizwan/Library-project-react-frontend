@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import DeleteModal from "./DeleteModal";
 import FormModal from "./Modal";
+import { UPDATE_BOOK } from "../../constants";
 
 const LibrarianBookCard = ({ book, setReRender }) => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const LibrarianBookCard = ({ book, setReRender }) => {
         >
           Detail
         </Button>
-        <FormModal book={book} setReRender={setReRender} name="Update" />
+        <FormModal book={book} setReRender={setReRender} name={UPDATE_BOOK} />
 
         <DeleteModal id={book?.id} setReRender={setReRender} />
       </CardActions>

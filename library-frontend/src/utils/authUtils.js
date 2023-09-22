@@ -1,6 +1,8 @@
 import axios from "axios";
 import { redirect } from "react-router-dom";
 
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
+
 export const refreshJwtToken = async (refreshToken) => {
   try {
     const response = await axios.post(
@@ -15,7 +17,7 @@ export const refreshJwtToken = async (refreshToken) => {
     }
 
     const data = response.data;
-    localStorage.setItem("access_token", data.access);
+    localStorage.setItem(ACCESS_TOKEN, data.access);
 
     return data.access;
   } catch (error) {
@@ -25,7 +27,7 @@ export const refreshJwtToken = async (refreshToken) => {
 };
 
 export const getAccessToken = () => {
-  return localStorage.getItem("access_token");
+  return localStorage.getItem(ACCESS_TOKEN);
 };
 
 export const isAccessTokenExpired = () => {
@@ -49,11 +51,11 @@ export const isTokenVaild = () => {
   if (!getAccessToken()) {
     return false;
   } else if (isAccessTokenExpired()) {
-    const refreshToken = localStorage.getItem("refresh_token");
+    const refreshToken = localStorage.getItem(REFRESH_TOKEN);
     if (refreshToken) {
       refreshJwtToken(refreshToken)
         .then((newAccessToken) => {
-          localStorage.setItem("access_token", newAccessToken);
+          localStorage.setItem(ACCESS_TOKEN, newAccessToken);
           return true;
         })
         .catch((error) => {

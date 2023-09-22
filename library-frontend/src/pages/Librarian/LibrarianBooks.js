@@ -6,6 +6,7 @@ import Header from "../../components/Header";
 import { isTokenVaild } from "../../utils/authUtils";
 import LibrarianBookCard from "../../components/librarian/LibrarianBookCard";
 import FormModal from "../../components/librarian/Modal";
+import { ADD_BOOK } from "../../constants";
 
 const LibrarianBooks = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -29,7 +30,7 @@ const LibrarianBooks = () => {
       {isTokenVaild() && (
         <div>
           <Header setSearchValue={setSearchValue} />
-          <FormModal setReRender={setReRender} name="Add Book" />
+          <FormModal setReRender={setReRender} name={ADD_BOOK} />
           <Stack
             useFlexGap
             flexWrap="wrap"

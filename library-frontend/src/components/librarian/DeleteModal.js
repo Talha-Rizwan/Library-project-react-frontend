@@ -6,18 +6,8 @@ import Modal from "@mui/material/Modal";
 import axios from "axios";
 
 import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
+import { MODAL_STYLE } from "../../constants";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
 const DeleteModal = ({ id, setReRender }) => {
   const [open, setOpen] = useState(false);
@@ -33,13 +23,13 @@ const DeleteModal = ({ id, setReRender }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={MODAL_STYLE}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Are you sure to delete?
           </Typography>
           <Button
             size="small"
-            sx={{ color: "green" }}
+            color="warning"
             onClick={() => {
               if (isTokenVaild()) {
                 const headers = {
@@ -66,7 +56,7 @@ const DeleteModal = ({ id, setReRender }) => {
           >
             Delete
           </Button>
-          <Button size="small" sx={{ color: "green" }} onClick={handleClose}>
+          <Button size="small"  onClick={handleClose}>
             No
           </Button>
         </Box>

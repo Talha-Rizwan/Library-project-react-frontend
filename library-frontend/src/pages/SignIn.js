@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import { ACCESS_TOKEN, REFRESH_TOKEN, LIBRARIAN_ROLE } from "../constants";
 
 const defaultTheme = createTheme();
 
@@ -36,10 +37,14 @@ export default function SignIn() {
         setFormErrors(response.data.message);
 
         if (response.data.message === "login success") {
-          localStorage.setItem("access_token", response.data.token.access);
-          localStorage.setItem("refresh_token", response.data.token.refresh);
-          localStorage.setItem("librarian", response.data.librarian);
-          navigate("/");
+          localStorage.setItem(ACCESS_TOKEN, response.data.token.access);
+          localStorage.setItem(REFRESH_TOKEN, response.data.token.refresh);
+          localStorage.setItem(LIBRARIAN_ROLE, response.data.librarian);
+          if (response.data.librarian) {
+            navigate("/librarian/");
+          } else {
+            navigate("/");
+          }
         }
       } else {
         setFormErrors("Please fill required fields!");

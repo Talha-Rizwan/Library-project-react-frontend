@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
+import { ACCESS_TOKEN, REFRESH_TOKEN, LIBRARIAN_ROLE } from "../constants";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -35,9 +36,9 @@ const NavBar = () => {
   const handleCloseUserMenu = (url) => {
     if (url) {
       if (url === "/login/") {
-        localStorage.setItem("access_token", null);
-        localStorage.setItem("refresh_token", null);
-        localStorage.setItem("librarian", null);
+        localStorage.setItem(ACCESS_TOKEN, null);
+        localStorage.setItem(REFRESH_TOKEN, null);
+        localStorage.setItem(LIBRARIAN_ROLE, null);
       }
       navigate(url);
     }
@@ -78,7 +79,7 @@ const NavBar = () => {
               <MenuIcon />
             </IconButton>
 
-            {localStorage.getItem("librarian") ? (
+            {localStorage.getItem(LIBRARIAN_ROLE) ? (
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorElNav}
@@ -152,7 +153,7 @@ const NavBar = () => {
           >
             Library
           </Typography>
-          {localStorage.getItem("librarian") ? (
+          {localStorage.getItem(LIBRARIAN_ROLE) ? (
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               <Button
                 onClick={() => handleCloseNavMenu("/librarian/")}
