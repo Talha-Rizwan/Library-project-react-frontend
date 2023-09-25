@@ -4,7 +4,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { APPROVE_TICKET, REJECT_TICKET, TICKET_STATUS } from "../../constants";
-import FormModal from "./Modal";
+import FormModal from "../common/Modal";
 
 const TicketCard = ({ ticket, setRerender }) => {
   return (

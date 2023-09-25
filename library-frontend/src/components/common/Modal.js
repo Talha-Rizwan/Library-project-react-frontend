@@ -6,9 +6,9 @@ import Modal from "@mui/material/Modal";
 import { Stack } from "@mui/material";
 
 import { MODAL_STYLE, REJECT_TICKET, USER_TICKET } from "../../constants";
-import Form from "./Form";
-import RejectRequestForm from "./RejectRequestForm";
-import UserTicketForm from "./UserTicketForm";
+import Form from "../librarian/Form";
+import RejectRequestForm from "../librarian/RejectRequestForm";
+import UserTicketForm from "../user/UserTicketForm";
 
 const FormModal = ({ object, setReRender, name }) => {
   const [open, setOpen] = useState(false);

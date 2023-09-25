@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Stack } from "@mui/material";
 
-import Header from "../../components/Header";
+import Header from "../../components/common/Header";
 import { isLibrarian, isTokenVaild } from "../../utils/authUtils";
 import LibrarianBookCard from "../../components/librarian/LibrarianBookCard";
-import FormModal from "../../components/librarian/Modal";
+import FormModal from "../../components/common/Modal";
 import { ADD_BOOK, URL } from "../../constants";
 import { useNavigate } from "react-router-dom";
 

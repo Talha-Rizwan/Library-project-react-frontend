@@ -7,7 +7,7 @@ import SignIn from "./pages/SignIn";
 import Home from "./pages/user/Home";
 import BookDetail from "./components/user/BookDetail";
 import MyBooks from "./pages/user/MyBooks";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/common/NavBar";
 import UpdateProfile from "./pages/UpdateProfile";
 import LibrarianBooks from "./pages/Librarian/LibrarianBooks";
 import UserBookRequests from "./pages/Librarian/Requests";

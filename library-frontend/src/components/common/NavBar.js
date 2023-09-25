@@ -13,13 +13,13 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 
-import FormModal from "./librarian/Modal";
+import FormModal from "./Modal";
 import {
   ACCESS_TOKEN,
   REFRESH_TOKEN,
   LIBRARIAN_ROLE,
   USER_TICKET,
-} from "../constants";
+} from "../../constants";
 
 const NavBar = () => {
   const navigate = useNavigate();

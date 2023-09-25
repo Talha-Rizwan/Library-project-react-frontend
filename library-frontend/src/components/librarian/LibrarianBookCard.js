@@ -7,7 +7,7 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import DeleteModal from "./DeleteModal";
-import FormModal from "./Modal";
+import FormModal from "../common/Modal";
 import { UPDATE_BOOK } from "../../constants";
 
 const LibrarianBookCard = ({ book, setReRender }) => {
