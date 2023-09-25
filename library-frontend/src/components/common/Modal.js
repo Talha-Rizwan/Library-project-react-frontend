@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -60,6 +61,12 @@ const FormModal = ({ object, setReRender, name }) => {
       </Modal>
     </div>
   );
+};
+
+FormModal.propTypes = {
+  object: PropTypes.object,
+  setReRender: PropTypes.func,
+  name: PropTypes.string.isRequired,
 };
 
 export default FormModal;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
@@ -40,5 +41,16 @@ const BookList = ({ books, userBooks, setRerender }) => (
     )}
   </Stack>
 );
+
+BookList.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      requested_book: PropTypes.object,
+      status: PropTypes.string,
+    })
+  ),
+  userBooks: PropTypes.array,
+  setRerender: PropTypes.func.isRequired,
+};
 
 export default BookList;

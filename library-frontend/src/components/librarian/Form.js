@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -169,4 +170,12 @@ const Form = ({ object, closeModal, setReRender, name }) => {
     </ThemeProvider>
   );
 };
+
+Form.propTypes = {
+  object: PropTypes.object,
+  closeModal: PropTypes.func.isRequired,
+  setReRender: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
 export default Form;

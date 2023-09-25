@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -95,4 +96,9 @@ const UserTicketForm = ({ closeModal }) => {
     </ThemeProvider>
   );
 };
+
+UserTicketForm.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+};
+
 export default UserTicketForm;

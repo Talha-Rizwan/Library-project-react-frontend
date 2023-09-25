@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -69,13 +70,9 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
                 };
 
                 axios
-                  .post(
-                    `${URL}/api/home/user-request/`,
-                    requestBody,
-                    {
-                      headers: headers,
-                    }
-                  )
+                  .post(`${URL}/api/home/user-request/`, requestBody, {
+                    headers: headers,
+                  })
                   .then((response) => {
                     console.log("Request Book successful:", response.data);
                     setRerender((prev) => !prev);
@@ -106,9 +103,7 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
                 return_id(book.id);
                 axios
                   .put(
-                    `${URL}/api/home/return-request/${return_id(
-                      book.id
-                    )}/`,
+                    `${URL}/api/home/return-request/${return_id(book.id)}/`,
                     requestBody,
                     {
                       headers: headers,
@@ -148,9 +143,7 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
                   return_id(book.id);
                   axios
                     .put(
-                      `${URL}/api/home/re-request/${return_id(
-                        book.id
-                      )}/`,
+                      `${URL}/api/home/re-request/${return_id(book.id)}/`,
                       requestBody,
                       {
                         headers: headers,
@@ -178,6 +171,25 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
       </CardActions>
     </Card>
   );
+};
+
+BookCard.propTypes = {
+  book: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    author_name: PropTypes.string.isRequired,
+    number_of_books: PropTypes.string,
+  }),
+  userBooks: PropTypes.arrayOf(
+    PropTypes.shape({
+      requested_book: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+      }),
+      status: PropTypes.string,
+    })
+  ),
+  BookStatus: PropTypes.string,
+  setRerender: PropTypes.func.isRequired,
 };
 
 export default BookCard;

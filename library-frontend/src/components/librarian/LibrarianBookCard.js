@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -42,6 +43,17 @@ const LibrarianBookCard = ({ book, setReRender }) => {
       </CardActions>
     </Card>
   );
+};
+
+LibrarianBookCard.propTypes = {
+  book: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    author_name: PropTypes.string,
+    publisher_name: PropTypes.string,
+    number_of_books: PropTypes.string,
+  }),
+  setReRender: PropTypes.func.isRequired,
 };
 
 export default LibrarianBookCard;

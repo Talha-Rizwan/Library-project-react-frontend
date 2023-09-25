@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -95,4 +96,13 @@ const RejectRequestForm = ({ object, closeModal, setReRender }) => {
     </ThemeProvider>
   );
 };
+
+RejectRequestForm.propTypes = {
+  object: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }),
+  closeModal: PropTypes.func.isRequired,
+  setReRender: PropTypes.func.isRequired,
+};
+
 export default RejectRequestForm;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -43,13 +44,9 @@ const RequestCard = ({ request, setRerender }) => (
               };
 
               axios
-                .put(
-                  `${URL}/api/home/request/${request?.id}/`,
-                  requestBody,
-                  {
-                    headers: headers,
-                  }
-                )
+                .put(`${URL}/api/home/request/${request?.id}/`, requestBody, {
+                  headers: headers,
+                })
                 .then((response) => {
                   console.log("Request update successful: ", response.data);
                   setRerender((prev) => !prev);
@@ -74,13 +71,9 @@ const RequestCard = ({ request, setRerender }) => (
               };
 
               axios
-                .put(
-                  `${URL}/api/home/request/${request?.id}/`,
-                  requestBody,
-                  {
-                    headers: headers,
-                  }
-                )
+                .put(`${URL}/api/home/request/${request?.id}/`, requestBody, {
+                  headers: headers,
+                })
                 .then((response) => {
                   console.log("Request update successful: ", response.data);
                   setRerender((prev) => !prev);
@@ -132,5 +125,16 @@ const RequestCard = ({ request, setRerender }) => (
     )}
   </Card>
 );
+
+RequestCard.propTypes = {
+  request: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    requested_book: PropTypes.string,
+    request_user: PropTypes.string,
+    created: PropTypes.string,
+    status: PropTypes.string,
+  }),
+  setRerender: PropTypes.func.isRequired,
+};
 
 export default RequestCard;

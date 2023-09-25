@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -27,5 +28,9 @@ const Header = ({ setSearchValue }) => (
     </AppBar>
   </Box>
 );
+
+Header.propTypes = {
+  setSearchValue: PropTypes.func,
+};
 
 export default Header;

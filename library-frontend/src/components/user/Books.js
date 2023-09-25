@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Stack from "@mui/material/Stack";
 
 import BookCard from "./BookCard";
@@ -22,5 +23,15 @@ const Books = ({ books, userBooks, setRerender }) => (
     ))}
   </Stack>
 );
+
+Books.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })
+  ),
+  userBooks: PropTypes.array.isRequired,
+  setRerender: PropTypes.func.isRequired,
+};
 
 export default Books;

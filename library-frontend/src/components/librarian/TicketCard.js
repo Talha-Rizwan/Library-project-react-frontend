@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -35,5 +36,14 @@ const TicketCard = ({ ticket, setRerender }) => (
     )}
   </Card>
 );
+
+TicketCard.propTypes = {
+  ticket: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    status: PropTypes.string,
+    request_user: PropTypes.string,
+  }),
+  setRerender: PropTypes.func.isRequired,
+};
 
 export default TicketCard;

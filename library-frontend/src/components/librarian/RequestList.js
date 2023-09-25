@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
@@ -38,5 +39,18 @@ const RequestList = ({ requests, setRerender }) => (
     )}
   </Stack>
 );
+
+RequestList.propTypes = {
+  requests: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      requested_book: PropTypes.string,
+      request_user: PropTypes.string,
+      created: PropTypes.string,
+      status: PropTypes.string,
+    })
+  ),
+  setRerender: PropTypes.func.isRequired,
+};
 
 export default RequestList;

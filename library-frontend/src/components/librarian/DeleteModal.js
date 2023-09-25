@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -36,12 +37,9 @@ const DeleteModal = ({ id, setReRender }) => {
                 };
 
                 axios
-                  .delete(
-                    `${URL}/api/home/book-view-set/${id}/`,
-                    {
-                      headers: headers,
-                    }
-                  )
+                  .delete(`${URL}/api/home/book-view-set/${id}/`, {
+                    headers: headers,
+                  })
                   .then((response) => {
                     console.log("delete successful: ", response.data);
                     setReRender((prev) => !prev);
@@ -62,6 +60,11 @@ const DeleteModal = ({ id, setReRender }) => {
       </Modal>
     </div>
   );
+};
+
+DeleteModal.propTypes = {
+  id: PropTypes.number.isRequired,
+  setReRender: PropTypes.func.isRequired,
 };
 
 export default DeleteModal;

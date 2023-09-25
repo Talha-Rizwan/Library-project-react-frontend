@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -30,6 +31,12 @@ const DashboardCard = ({ name, url, description }) => {
       </CardActions>
     </Box>
   );
+};
+
+DashboardCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  url: PropTypes.string,
+  description: PropTypes.string,
 };
 
 export default DashboardCard;

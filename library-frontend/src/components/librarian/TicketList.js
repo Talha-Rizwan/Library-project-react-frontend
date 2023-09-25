@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
@@ -38,5 +39,16 @@ const TicketList = ({ tickets, setRerender }) => (
     )}
   </Stack>
 );
+
+TicketList.propTypes = {
+  tickets: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      status: PropTypes.string,
+      request_user: PropTypes.string,
+    })
+  ),
+  setRerender: PropTypes.func.isRequired,
+};
 
 export default TicketList;
