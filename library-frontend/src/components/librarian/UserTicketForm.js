@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 
 import { isTokenVaild, getAccessToken } from "../../utils/authUtils";
+import { URL } from "../../constants";
 
 const defaultTheme = createTheme();
 
@@ -28,7 +29,7 @@ const UserTicketForm = ({ closeModal }) => {
             Authorization: `Bearer ${getAccessToken()}`,
           };
           const response = await axios.post(
-            `http://127.0.0.1:8000/api/home/ticket/`,
+            `${URL}/api/home/ticket/`,
             {
               book_name: data.get("book_name"),
               status: "P",

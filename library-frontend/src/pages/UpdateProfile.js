@@ -14,6 +14,7 @@ import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
 
 import { isTokenVaild, getAccessToken } from "../utils/authUtils";
+import { URL } from "../constants";
 
 const defaultTheme = createTheme();
 
@@ -46,7 +47,7 @@ const UpdateProfile = () => {
             Authorization: `Bearer ${getAccessToken()}`,
           };
           const response = await axios.put(
-            "http://127.0.0.1:8000/api/user/user-profile/",
+            `${URL}/api/user/user-profile/`,
             {
               full_name: data.get("fullname"),
               phone: data.get("phone"),

@@ -7,7 +7,7 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import { REQUEST_STATUS } from "../../constants";
+import { REQUEST_STATUS, URL } from "../../constants";
 import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
 
 const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
@@ -70,7 +70,7 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
 
                 axios
                   .post(
-                    "http://127.0.0.1:8000/api/home/user-request/",
+                    `${URL}/api/home/user-request/`,
                     requestBody,
                     {
                       headers: headers,
@@ -106,7 +106,7 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
                 return_id(book.id);
                 axios
                   .put(
-                    `http://127.0.0.1:8000/api/home/return-request/${return_id(
+                    `${URL}/api/home/return-request/${return_id(
                       book.id
                     )}/`,
                     requestBody,
@@ -148,7 +148,7 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
                   return_id(book.id);
                   axios
                     .put(
-                      `http://127.0.0.1:8000/api/home/re-request/${return_id(
+                      `${URL}/api/home/re-request/${return_id(
                         book.id
                       )}/`,
                       requestBody,

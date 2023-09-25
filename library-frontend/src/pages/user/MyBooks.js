@@ -7,7 +7,7 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 
-import { REQUEST_STATUS } from "../../constants";
+import { REQUEST_STATUS, URL } from "../../constants";
 import {
   getAccessToken,
   isTokenVaild,
@@ -34,7 +34,7 @@ const MyBooks = () => {
         Authorization: `Bearer ${getAccessToken()}`,
       };
       axios
-        .get(`http://127.0.0.1:8000/api/home/request-set/`, {
+        .get(`${URL}/api/home/request-set/`, {
           headers: headers,
         })
         .then((response) => {

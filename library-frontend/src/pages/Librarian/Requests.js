@@ -13,7 +13,7 @@ import {
   isLibrarian,
   isTokenVaild,
 } from "../../utils/authUtils";
-import { REQUEST_STATUS } from "../../constants";
+import { REQUEST_STATUS, URL } from "../../constants";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -34,7 +34,7 @@ const UserBookRequests = () => {
         Authorization: `Bearer ${getAccessToken()}`,
       };
       axios
-        .get(`http://127.0.0.1:8000/api/home/request/`, {
+        .get(`${URL}/api/home/request/`, {
           headers: headers,
         })
         .then((response) => {

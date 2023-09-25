@@ -6,7 +6,7 @@ import Modal from "@mui/material/Modal";
 import axios from "axios";
 
 import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
-import { MODAL_STYLE } from "../../constants";
+import { MODAL_STYLE, URL } from "../../constants";
 
 const DeleteModal = ({ id, setReRender }) => {
   const [open, setOpen] = useState(false);
@@ -37,7 +37,7 @@ const DeleteModal = ({ id, setReRender }) => {
 
                 axios
                   .delete(
-                    `http://127.0.0.1:8000/api/home/book-view-set/${id}/`,
+                    `${URL}/api/home/book-view-set/${id}/`,
                     {
                       headers: headers,
                     }

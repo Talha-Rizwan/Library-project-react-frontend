@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 
-import { REQUEST_STATUS } from "../../constants";
+import { REQUEST_STATUS, URL } from "../../constants";
 import { isTokenVaild, getAccessToken } from "../../utils/authUtils";
 
 const RequestCard = ({ request, setRerender }) => (
@@ -44,7 +44,7 @@ const RequestCard = ({ request, setRerender }) => (
 
               axios
                 .put(
-                  `http://127.0.0.1:8000/api/home/request/${request?.id}/`,
+                  `${URL}/api/home/request/${request?.id}/`,
                   requestBody,
                   {
                     headers: headers,
@@ -75,7 +75,7 @@ const RequestCard = ({ request, setRerender }) => (
 
               axios
                 .put(
-                  `http://127.0.0.1:8000/api/home/request/${request?.id}/`,
+                  `${URL}/api/home/request/${request?.id}/`,
                   requestBody,
                   {
                     headers: headers,
@@ -110,7 +110,7 @@ const RequestCard = ({ request, setRerender }) => (
 
               axios
                 .put(
-                  `http://127.0.0.1:8000/api/home/close-request/${request?.id}/`,
+                  `${URL}/api/home/close-request/${request?.id}/`,
                   requestBody,
                   {
                     headers: headers,

@@ -9,7 +9,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 
 import { isTokenVaild, getAccessToken } from "../../utils/authUtils";
-import { ADD_BOOK, UPDATE_BOOK, APPROVE_TICKET } from "../../constants";
+import { ADD_BOOK, UPDATE_BOOK, APPROVE_TICKET, URL } from "../../constants";
 
 const defaultTheme = createTheme();
 
@@ -35,7 +35,7 @@ const Form = ({ object, closeModal, setReRender, name }) => {
           };
           if (name === ADD_BOOK) {
             const response = await axios.post(
-              "http://127.0.0.1:8000/api/home/book-view-set/",
+              `${URL}/api/home/book-view-set/`,
               {
                 name: data.get("name"),
                 author_name: data.get("author_name"),
@@ -50,7 +50,7 @@ const Form = ({ object, closeModal, setReRender, name }) => {
             console.log("New Book Successfully Added!");
           } else if (name === UPDATE_BOOK) {
             const response = await axios.put(
-              `http://127.0.0.1:8000/api/home/book-view-set/${object.id}/`,
+              `${URL}/api/home/book-view-set/${object.id}/`,
               {
                 name: data.get("name"),
                 author_name: data.get("author_name"),
@@ -65,7 +65,7 @@ const Form = ({ object, closeModal, setReRender, name }) => {
             console.log("Updated Book Information!");
           } else if (name === APPROVE_TICKET) {
             const response = await axios.put(
-              `http://127.0.0.1:8000/api/home/librarian-ticket/${object.id}/`,
+              `${URL}/api/home/librarian-ticket/${object.id}/`,
               {
                 status: "A",
                 book_name: data.get("name"),

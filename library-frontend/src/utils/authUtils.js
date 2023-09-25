@@ -1,12 +1,12 @@
 import axios from "axios";
 import { redirect } from "react-router-dom";
 
-import { ACCESS_TOKEN, REFRESH_TOKEN, LIBRARIAN_ROLE } from "../constants";
+import { ACCESS_TOKEN, REFRESH_TOKEN, LIBRARIAN_ROLE, URL } from "../constants";
 
 export const refreshJwtToken = async (refreshToken) => {
   try {
     const response = await axios.post(
-      "http://127.0.0.1:8000/api/user/refresh/",
+      `${URL}/api/user/refresh/`,
       {
         refresh: refreshToken,
       }

@@ -6,8 +6,8 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-import { TICKET_STATUS } from "../../constants";
 
+import { TICKET_STATUS, URL } from "../../constants";
 import {
   getAccessToken,
   isLibrarian,
@@ -34,7 +34,7 @@ const Tickets = () => {
         Authorization: `Bearer ${getAccessToken()}`,
       };
       axios
-        .get(`http://127.0.0.1:8000/api/home/ticket/`, {
+        .get(`${URL}/api/home/ticket/`, {
           headers: headers,
         })
         .then((response) => {

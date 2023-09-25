@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import { isTokenVaild } from "../../utils/authUtils";
+import { URL } from "../../constants";
 
 const BookDetail = () => {
   const { id } = useParams();
@@ -20,7 +21,7 @@ const BookDetail = () => {
       navigate("/login/");
     }
     axios
-      .get(`http://127.0.0.1:8000/api/home/book-view-set/${id}/`)
+      .get(`${URL}/api/home/book-view-set/${id}/`)
       .then((response) => {
         setDetail(response.data);
       })

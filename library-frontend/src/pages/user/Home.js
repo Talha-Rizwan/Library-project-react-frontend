@@ -10,6 +10,7 @@ import {
   isLibrarian,
 } from "../../utils/authUtils";
 import BookCard from "../../components/user/BookCard";
+import { URL } from "../../constants";
 
 const Home = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -21,7 +22,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/api/home/book-view-set/?name=${searchValue}`)
+      .get(`${URL}/api/home/book-view-set/?name=${searchValue}`)
       .then((response) => {
         setBooks(response.data);
       })
@@ -37,7 +38,7 @@ const Home = () => {
         Authorization: `Bearer ${getAccessToken()}`,
       };
       axios
-        .get(`http://127.0.0.1:8000/api/home/request-set/`, {
+        .get(`${URL}/api/home/request-set/`, {
           headers: headers,
         })
         .then((response) => {

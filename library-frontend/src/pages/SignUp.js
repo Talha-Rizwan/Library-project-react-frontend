@@ -12,7 +12,9 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 import { isTokenVaild } from "../utils/authUtils";
+import { URL } from "../constants";
 
 const defaultTheme = createTheme();
 
@@ -36,7 +38,7 @@ const SignUp = () => {
         setFormErrors("Fill the required fields");
       } else {
         const response = await axios.post(
-          "http://127.0.0.1:8000/api/user/user-profile/",
+          `${URL}/api/user/user-profile/`,
           {
             password: data.get("password"),
             username: data.get("username"),

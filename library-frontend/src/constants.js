@@ -50,3 +50,5 @@ export const TICKET_STATUS = {
   APPROVED_STATUS: "A",
   REJECTED_STATUS: "R",
 };
+
+export const URL = `http://127.0.0.1:8000`;

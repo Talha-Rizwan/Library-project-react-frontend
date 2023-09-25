@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 import { isLibrarian, isTokenVaild } from "../../utils/authUtils";
 import LibrarianBookCard from "../../components/librarian/LibrarianBookCard";
 import FormModal from "../../components/librarian/Modal";
-import { ADD_BOOK } from "../../constants";
+import { ADD_BOOK, URL } from "../../constants";
 import { useNavigate } from "react-router-dom";
 
 const LibrarianBooks = () => {
@@ -22,7 +22,7 @@ const LibrarianBooks = () => {
       navigate("/");
     }
     axios
-      .get(`http://127.0.0.1:8000/api/home/book-view-set/?name=${searchValue}`)
+      .get(`${URL}/api/home/book-view-set/?name=${searchValue}`)
       .then((response) => {
         setBooks(response.data);
       })
