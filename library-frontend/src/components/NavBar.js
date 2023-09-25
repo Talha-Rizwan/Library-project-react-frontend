@@ -79,7 +79,7 @@ const NavBar = () => {
               <MenuIcon />
             </IconButton>
 
-            {localStorage.getItem(LIBRARIAN_ROLE)==='true' && (
+            {localStorage.getItem(LIBRARIAN_ROLE) === "true" && (
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorElNav}
@@ -111,10 +111,14 @@ const NavBar = () => {
                 >
                   <Typography textAlign="center">Books</Typography>
                 </MenuItem>
+                <MenuItem
+                  onClick={() => handleCloseNavMenu("/librarian/tickets/")}
+                >
+                  <Typography textAlign="center">Tickets</Typography>
+                </MenuItem>
               </Menu>
-            )
-              }
-            {localStorage.getItem(LIBRARIAN_ROLE)==='false' &&  (
+            )}
+            {localStorage.getItem(LIBRARIAN_ROLE) === "false" && (
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorElNav}
@@ -160,7 +164,7 @@ const NavBar = () => {
           >
             Library
           </Typography>
-          {localStorage.getItem(LIBRARIAN_ROLE)==='true' && (
+          {localStorage.getItem(LIBRARIAN_ROLE) === "true" && (
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               <Button
                 onClick={() => handleCloseNavMenu("/librarian/")}
@@ -180,9 +184,15 @@ const NavBar = () => {
               >
                 Books
               </Button>
+              <Button
+                onClick={() => handleCloseNavMenu("/librarian/tickets/")}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Tickets
+              </Button>
             </Box>
-          ) }
-          {localStorage.getItem(LIBRARIAN_ROLE)==='false' && (
+          )}
+          {localStorage.getItem(LIBRARIAN_ROLE) === "false" && (
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               <Button
                 onClick={() => handleCloseNavMenu("/")}
@@ -200,37 +210,37 @@ const NavBar = () => {
           )}
 
           {localStorage.getItem(LIBRARIAN_ROLE) !== null && (
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={() => handleCloseUserMenu()}
-            >
-              <MenuItem onClick={() => handleCloseUserMenu("/update/")}>
-                <Typography textAlign="center">Update Profile</Typography>
-              </MenuItem>
-              <MenuItem onClick={() => handleCloseUserMenu("/login/")}>
-                <Typography textAlign="center">Logout</Typography>
-              </MenuItem>
-            </Menu>
-          </Box>
-)}
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={() => handleCloseUserMenu()}
+              >
+                <MenuItem onClick={() => handleCloseUserMenu("/update/")}>
+                  <Typography textAlign="center">Update Profile</Typography>
+                </MenuItem>
+                <MenuItem onClick={() => handleCloseUserMenu("/login/")}>
+                  <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
+              </Menu>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

@@ -9,11 +9,11 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 
 import { isTokenVaild, getAccessToken } from "../../utils/authUtils";
-import { ADD_BOOK, UPDATE_BOOK } from "../../constants";
+import { ADD_BOOK, UPDATE_BOOK, APPROVE_TICKET } from "../../constants";
 
 const defaultTheme = createTheme();
 
-const Form = ({ book, closeModal, setReRender, name }) => {
+const Form = ({ object, closeModal, setReRender, name }) => {
   const [formErrors, setFormErrors] = useState("");
 
   const handleSubmit = async (event) => {
@@ -50,12 +50,28 @@ const Form = ({ book, closeModal, setReRender, name }) => {
             console.log("New Book Successfully Added!");
           } else if (name === UPDATE_BOOK) {
             const response = await axios.put(
-              `http://127.0.0.1:8000/api/home/book-view-set/${book.id}/`,
+              `http://127.0.0.1:8000/api/home/book-view-set/${object.id}/`,
               {
                 name: data.get("name"),
                 author_name: data.get("author_name"),
                 publisher_name: data.get("publisher_name"),
                 number_of_books: data.get("number_of_books"),
+              },
+              {
+                headers: headers,
+              }
+            );
+            console.log("Response data:", response.data);
+            console.log("Updated Book Information!");
+          } else if (name === APPROVE_TICKET) {
+            const response = await axios.put(
+              `http://127.0.0.1:8000/api/home/librarian-ticket/${object.id}/`,
+              {
+                status: "A",
+                book_name: data.get("name"),
+                author_name: data.get("author_name"),
+                publisher: data.get("publisher_name"),
+                number_of_copies: data.get("number_of_books"),
               },
               {
                 headers: headers,
@@ -100,7 +116,7 @@ const Form = ({ book, closeModal, setReRender, name }) => {
                   id="name"
                   label="Book Name"
                   name="name"
-                  defaultValue={book?.name}
+                  defaultValue={object?.name}
                   autoComplete="name"
                 />
               </Grid>
@@ -111,7 +127,7 @@ const Form = ({ book, closeModal, setReRender, name }) => {
                   id="author_name"
                   label="Author Name"
                   name="author_name"
-                  defaultValue={book?.author_name}
+                  defaultValue={object?.author_name}
                   autoComplete="author_name"
                 />
               </Grid>
@@ -122,7 +138,7 @@ const Form = ({ book, closeModal, setReRender, name }) => {
                   name="publisher_name"
                   label="Publisher"
                   id="publisher_name"
-                  defaultValue={book?.publisher_name}
+                  defaultValue={object?.publisher_name}
                   autoComplete="publisher_name"
                 />
               </Grid>
@@ -133,7 +149,7 @@ const Form = ({ book, closeModal, setReRender, name }) => {
                   id="number_of_books"
                   label="Number of Copies"
                   name="number_of_books"
-                  defaultValue={book?.number_of_books}
+                  defaultValue={object?.number_of_books}
                   autoComplete="number_of_books"
                 />
               </Grid>

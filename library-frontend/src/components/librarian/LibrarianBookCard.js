@@ -36,7 +36,7 @@ const LibrarianBookCard = ({ book, setReRender }) => {
         >
           Detail
         </Button>
-        <FormModal book={book} setReRender={setReRender} name={UPDATE_BOOK} />
+        <FormModal object={book} setReRender={setReRender} name={UPDATE_BOOK} />
 
         <DeleteModal id={book?.id} setReRender={setReRender} />
       </CardActions>

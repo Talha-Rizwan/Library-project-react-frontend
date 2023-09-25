@@ -5,10 +5,11 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Stack } from "@mui/material";
 
-import { MODAL_STYLE } from "../../constants";
+import { MODAL_STYLE, REJECT_TICKET } from "../../constants";
 import Form from "./Form";
+import RejectRequestForm from "./RejectRequestForm";
 
-const FormModal = ({ book, setReRender, name }) => {
+const FormModal = ({ object, setReRender, name }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -25,12 +26,21 @@ const FormModal = ({ book, setReRender, name }) => {
       >
         <Box sx={MODAL_STYLE}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            <Form
-              book={book}
-              closeModal={handleClose}
-              setReRender={setReRender}
-              name={name}
-            />
+            {name == REJECT_TICKET ? (
+              <RejectRequestForm
+                object={object}
+                closeModal={handleClose}
+                setReRender={setReRender}
+                name={name}
+              />
+            ) : (
+              <Form
+                object={object}
+                closeModal={handleClose}
+                setReRender={setReRender}
+                name={name}
+              />
+            )}
           </Typography>
           <Button size="small" color="primary" onClick={handleClose}>
             Close
