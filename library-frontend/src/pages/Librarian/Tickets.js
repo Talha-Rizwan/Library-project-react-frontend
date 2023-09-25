@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Typography from "@mui/material/Typography";
@@ -9,20 +9,19 @@ import { styled } from "@mui/material/styles";
 import { TICKET_STATUS } from "../../constants";
 
 import {
-    getAccessToken,
-    isLibrarian,
-    isTokenVaild,
-  } from "../../utils/authUtils";
+  getAccessToken,
+  isLibrarian,
+  isTokenVaild,
+} from "../../utils/authUtils";
 import TicketList from "../../components/librarian/TicketList";
 
-
 const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
 
 const Tickets = () => {
   const navigate = useNavigate();
@@ -99,6 +98,6 @@ const Tickets = () => {
       </Box>
     </div>
   );
-}
+};
 
 export default Tickets;

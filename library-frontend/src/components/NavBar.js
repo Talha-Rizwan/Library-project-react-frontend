@@ -12,7 +12,14 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
-import { ACCESS_TOKEN, REFRESH_TOKEN, LIBRARIAN_ROLE } from "../constants";
+
+import FormModal from "./librarian/Modal";
+import {
+  ACCESS_TOKEN,
+  REFRESH_TOKEN,
+  LIBRARIAN_ROLE,
+  USER_TICKET,
+} from "../constants";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -143,6 +150,9 @@ const NavBar = () => {
                 <MenuItem onClick={() => handleCloseNavMenu("/mybooks/")}>
                   <Typography textAlign="center">My Books</Typography>
                 </MenuItem>
+                <MenuItem>
+                  <FormModal name={USER_TICKET} />
+                </MenuItem>
               </Menu>
             )}
           </Box>
@@ -205,6 +215,9 @@ const NavBar = () => {
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 My Books
+              </Button>
+              <Button sx={{ my: 2, color: "white", display: "block" }}>
+                <FormModal name={USER_TICKET} />
               </Button>
             </Box>
           )}

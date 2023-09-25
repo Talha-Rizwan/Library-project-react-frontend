@@ -9,7 +9,7 @@ import { Stack } from "@mui/material";
 import TicketCard from "./TicketCard";
 
 const TicketList = ({ tickets, setRerender }) => {
-    console.log("new tickets are : ", tickets)
+  console.log("new tickets are : ", tickets);
   return (
     <Stack
       useFlexGap

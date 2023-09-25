@@ -5,18 +5,27 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Stack } from "@mui/material";
 
-import { MODAL_STYLE, REJECT_TICKET } from "../../constants";
+import { MODAL_STYLE, REJECT_TICKET, USER_TICKET } from "../../constants";
 import Form from "./Form";
 import RejectRequestForm from "./RejectRequestForm";
+import UserTicketForm from "./UserTicketForm";
 
 const FormModal = ({ object, setReRender, name }) => {
   const [open, setOpen] = useState(false);
+
   const handleOpen = () => setOpen(true);
+
   const handleClose = () => setOpen(false);
+
   return (
     <div>
       <Stack direction={{ xs: "column", sm: "row" }} justifyContent="center">
-        <Button onClick={handleOpen}>{name}</Button>
+        <Button
+          onClick={handleOpen}
+          style={{ color: name === USER_TICKET ? "white" : "inherit" }}
+        >
+          {name}
+        </Button>
       </Stack>
       <Modal
         open={open}
@@ -26,13 +35,15 @@ const FormModal = ({ object, setReRender, name }) => {
       >
         <Box sx={MODAL_STYLE}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            {name == REJECT_TICKET ? (
+            {name === REJECT_TICKET ? (
               <RejectRequestForm
                 object={object}
                 closeModal={handleClose}
                 setReRender={setReRender}
                 name={name}
               />
+            ) : name === USER_TICKET ? (
+              <UserTicketForm closeModal={handleClose} />
             ) : (
               <Form
                 object={object}

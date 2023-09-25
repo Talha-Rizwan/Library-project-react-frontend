@@ -14,6 +14,7 @@ export const ADD_BOOK = "Add Book";
 export const UPDATE_BOOK = "Update";
 export const APPROVE_TICKET = "Approve";
 export const REJECT_TICKET = "Reject";
+export const USER_TICKET = "User Ticket";
 export const ACCESS_TOKEN = "access_token";
 export const REFRESH_TOKEN = "refresh_token";
 export const LIBRARIAN_ROLE = "librarian";

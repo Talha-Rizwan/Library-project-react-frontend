@@ -8,7 +8,6 @@ import axios from "axios";
 import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
 import { MODAL_STYLE } from "../../constants";
 
-
 const DeleteModal = ({ id, setReRender }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -56,7 +55,7 @@ const DeleteModal = ({ id, setReRender }) => {
           >
             Delete
           </Button>
-          <Button size="small"  onClick={handleClose}>
+          <Button size="small" onClick={handleClose}>
             No
           </Button>
         </Box>
