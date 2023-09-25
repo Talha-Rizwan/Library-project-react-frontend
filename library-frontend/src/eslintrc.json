@@ -12,5 +12,7 @@
       }
     },
     "plugins": ["react", "react-hooks"],
-    "rules": {}
+    "rules": {
+      "react-hooks/exhaustive-deps": "off"
+    }
 }  

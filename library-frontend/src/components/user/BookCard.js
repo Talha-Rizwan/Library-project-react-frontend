@@ -12,7 +12,7 @@ import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
 
 const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
   const navigate = useNavigate();
-  const status = BookStatus;
+  let status = BookStatus;
   const myBook = userBooks?.filter(
     (userbook) => userbook.requested_book.id === book.id
   );
