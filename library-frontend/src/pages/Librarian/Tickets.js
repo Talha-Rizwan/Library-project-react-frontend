@@ -39,7 +39,6 @@ const Tickets = () => {
         })
         .then((response) => {
           setTicket(response.data);
-          console.log("the tickets are : ", tickets);
         })
         .catch((error) => {
           console.log("Error getting data!");

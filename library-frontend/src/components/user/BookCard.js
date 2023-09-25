@@ -12,8 +12,8 @@ import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
 
 const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
   const navigate = useNavigate();
-  let status = BookStatus;
-  let myBook = userBooks?.filter(
+  const status = BookStatus;
+  const myBook = userBooks?.filter(
     (userbook) => userbook.requested_book.id === book.id
   );
 
@@ -24,7 +24,7 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
   });
 
   const return_id = (BookId) => {
-    let req = userBooks.filter(
+    const req = userBooks.filter(
       (request) => request.requested_book.id === BookId
     );
     return req[0]?.id;

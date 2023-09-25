@@ -39,7 +39,6 @@ const MyBooks = () => {
         })
         .then((response) => {
           setBooks(response.data);
-          console.log("the books are : ", books);
         })
         .catch((error) => {
           console.log("Error getting data!");

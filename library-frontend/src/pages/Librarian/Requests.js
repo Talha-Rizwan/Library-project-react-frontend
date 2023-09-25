@@ -39,7 +39,6 @@ const UserBookRequests = () => {
         })
         .then((response) => {
           setRequests(response.data);
-          console.log("the requests are : ", requests);
         })
         .catch((error) => {
           console.log("Error getting data!");

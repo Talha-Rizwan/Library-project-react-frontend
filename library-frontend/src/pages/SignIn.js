@@ -18,7 +18,7 @@ import { isTokenVaild } from "../utils/authUtils";
 
 const defaultTheme = createTheme();
 
-export default function SignIn() {
+const SignIn = () => {
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState("");
 
@@ -128,3 +128,5 @@ export default function SignIn() {
     </ThemeProvider>
   );
 }
+
+export default SignIn;

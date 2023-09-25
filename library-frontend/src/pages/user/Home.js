@@ -55,8 +55,6 @@ const Home = () => {
     }
   }, [rerender]);
 
-  console.log("the books are : ", userBooks);
-  console.log(isTokenVaild());
   return (
     <div>
       {isTokenVaild() && (

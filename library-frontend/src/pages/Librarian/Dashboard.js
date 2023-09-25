@@ -11,7 +11,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (isTokenVaild() === true && isLibrarian() === "false") {
-      console.log("hello world");
       navigate("/");
     } else if (isTokenVaild() === false) {
       navigate("/login/");
