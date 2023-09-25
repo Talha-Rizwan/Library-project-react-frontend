@@ -27,7 +27,7 @@ const UpdateProfile = () => {
     if (isTokenVaild() === false) {
       navigate("/login/");
     }
-  }, []);
+  });
 
   const handleChange = (event) => {
     setGender(event.target.value);

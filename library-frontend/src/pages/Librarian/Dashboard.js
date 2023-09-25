@@ -16,7 +16,7 @@ const Dashboard = () => {
     } else if (isTokenVaild() === false) {
       navigate("/login/");
     }
-  }, []);
+  });
 
   return (
     <Stack

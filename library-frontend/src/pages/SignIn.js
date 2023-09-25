@@ -26,7 +26,7 @@ export default function SignIn() {
     if (isTokenVaild() === true) {
       navigate("/");
     }
-  }, []);
+  });
 
   const handleSubmit = async (event) => {
     event.preventDefault();

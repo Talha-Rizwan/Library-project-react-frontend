@@ -29,7 +29,7 @@ const BookDetail = () => {
         console.log("Error getting data!");
         console.error("Error data: ", error);
       });
-  }, []);
+  });
 
   return (
     <Stack

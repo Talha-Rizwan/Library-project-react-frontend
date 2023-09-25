@@ -25,7 +25,7 @@ const SignUp = () => {
     if (isTokenVaild() === true) {
       navigate("/");
     }
-  }, []);
+  });
 
   const [formErrors, setFormErrors] = useState("");
 
