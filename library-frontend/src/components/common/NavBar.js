@@ -21,6 +21,8 @@ import {
   USER_TICKET,
 } from "../../constants";
 
+import './Navbar.css'
+
 const NavBar = () => {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -51,25 +53,17 @@ const NavBar = () => {
     }
     setAnchorElUser(null);
   };
-
   return (
-    <AppBar position="static">
+    <AppBar position="static" className="navbar">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters >
           <Typography
             variant="h6"
             noWrap
             component="a"
             href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
+            className="navbar-brand"
+            sx={{display:  { xs: "none", md: "flex" }}}
           >
             Library
           </Typography>
@@ -161,19 +155,16 @@ const NavBar = () => {
             noWrap
             component="a"
             href="/"
+            className="navbar-brand"
             sx={{
-              mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
+              }}
+            
           >
             Library
           </Typography>
+          
           {localStorage.getItem(LIBRARIAN_ROLE) === "true" && (
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               <Button
@@ -206,7 +197,7 @@ const NavBar = () => {
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               <Button
                 onClick={() => handleCloseNavMenu("/")}
-                sx={{ my: 2, color: "white", display: "block" }}
+                className="navbar-button"
               >
                 Home
               </Button>
