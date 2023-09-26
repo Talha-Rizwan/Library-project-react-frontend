@@ -8,7 +8,6 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
@@ -20,8 +19,9 @@ import {
   LIBRARIAN_ROLE,
   USER_TICKET,
 } from "../../constants";
+import { StyledNavButton, StyledTypography } from './styles'
 
-import './Navbar.css'
+
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -53,20 +53,20 @@ const NavBar = () => {
     }
     setAnchorElUser(null);
   };
+
   return (
-    <AppBar position="static" className="navbar">
+    <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters >
-          <Typography
+        <Toolbar disableGutters>
+          <StyledTypography
             variant="h6"
             noWrap
             component="a"
             href="/"
-            className="navbar-brand"
-            sx={{display:  { xs: "none", md: "flex" }}}
+            isXs={false}
           >
             Library
-          </Typography>
+          </StyledTypography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -150,66 +150,50 @@ const NavBar = () => {
               </Menu>
             )}
           </Box>
-          <Typography
+          <StyledTypography
             variant="h5"
             noWrap
             component="a"
             href="/"
-            className="navbar-brand"
-            sx={{
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              }}
-            
+            isXs={true}
           >
             Library
-          </Typography>
-          
+          </StyledTypography>
           {localStorage.getItem(LIBRARIAN_ROLE) === "true" && (
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              <Button
+              <StyledNavButton
                 onClick={() => handleCloseNavMenu("/librarian/")}
-                sx={{ my: 2, color: "white", display: "block" }}
               >
                 Home
-              </Button>
-              <Button
+              </StyledNavButton>
+              <StyledNavButton
                 onClick={() => handleCloseNavMenu("/librarian/requests")}
-                sx={{ my: 2, color: "white", display: "block" }}
               >
                 Requests
-              </Button>
-              <Button
+              </StyledNavButton>
+              <StyledNavButton
                 onClick={() => handleCloseNavMenu("/librarian/books/")}
-                sx={{ my: 2, color: "white", display: "block" }}
               >
                 Books
-              </Button>
-              <Button
+              </StyledNavButton>
+              <StyledNavButton
                 onClick={() => handleCloseNavMenu("/librarian/tickets/")}
-                sx={{ my: 2, color: "white", display: "block" }}
               >
                 Tickets
-              </Button>
+              </StyledNavButton>
             </Box>
           )}
           {localStorage.getItem(LIBRARIAN_ROLE) === "false" && (
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              <Button
-                onClick={() => handleCloseNavMenu("/")}
-                className="navbar-button"
-              >
+              <StyledNavButton onClick={() => handleCloseNavMenu("/")}>
                 Home
-              </Button>
-              <Button
-                onClick={() => handleCloseNavMenu("/mybooks/")}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
+              </StyledNavButton>
+              <StyledNavButton onClick={() => handleCloseNavMenu("/mybooks/")}>
                 My Books
-              </Button>
-              <Button sx={{ my: 2, color: "white", display: "block" }}>
+              </StyledNavButton>
+              <StyledNavButton>
                 <FormModal name={USER_TICKET} />
-              </Button>
+              </StyledNavButton>
             </Box>
           )}
 
