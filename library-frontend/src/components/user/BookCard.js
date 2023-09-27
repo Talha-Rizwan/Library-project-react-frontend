@@ -4,12 +4,13 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { CardActionArea, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { REQUEST_STATUS, URL } from "../../constants";
 import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
+import { StyledButton, CustomWideCard } from "../../emotionStyle";
 
 const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
   };
 
   return (
-    <Card sx={{ width: 345 }}>
+    <CustomWideCard width="345">
       <CardActionArea>
         <CardMedia component="img" height="140" image="/book.jpeg" alt="book" />
         <CardContent>
@@ -45,20 +46,20 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button
+        <StyledButton
           size="small"
-          color="primary"
+          buttonColor="blue"
           onClick={() => {
             navigate(`/book/${book?.id}`);
           }}
         >
           Detail
-        </Button>
+        </StyledButton>
 
         {!status && book.number_of_books && (
-          <Button
+          <StyledButton
             size="small"
-            color="primary"
+            buttonColor="green"
             onClick={() => {
               if (isTokenVaild()) {
                 const headers = {
@@ -84,13 +85,13 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
             }}
           >
             Request Book
-          </Button>
+          </StyledButton>
         )}
 
         {status === "A" && (
-          <Button
+          <StyledButton
             size="small"
-            sx={{ color: "green" }}
+            buttonColor="orange"
             onClick={() => {
               if (isTokenVaild()) {
                 const headers = {
@@ -123,45 +124,43 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
             }}
           >
             Return Book
-          </Button>
+          </StyledButton>
         )}
-        {status === REQUEST_STATUS.CLOSED_STATUS && (
-            <p sx={{ color: "red" }}>Already Read...</p>
-          ) && (
-            <Button
-              size="small"
-              sx={{ color: "orange" }}
-              onClick={() => {
-                if (isTokenVaild()) {
-                  const headers = {
-                    Authorization: `Bearer ${getAccessToken()}`,
-                  };
-                  const requestBody = {
-                    status: "B",
-                  };
+        {status === REQUEST_STATUS.CLOSED_STATUS && <p>Already Read...</p> && (
+          <StyledButton
+            size="small"
+            buttonColor="red"
+            onClick={() => {
+              if (isTokenVaild()) {
+                const headers = {
+                  Authorization: `Bearer ${getAccessToken()}`,
+                };
+                const requestBody = {
+                  status: "B",
+                };
 
-                  return_id(book.id);
-                  axios
-                    .put(
-                      `${URL}/api/home/re-request/${return_id(book.id)}/`,
-                      requestBody,
-                      {
-                        headers: headers,
-                      }
-                    )
-                    .then((response) => {
-                      console.log("Request Book successful:", response.data);
-                      setRerender((prev) => !prev);
-                    })
-                    .catch((error) => {
-                      console.error("Error re-requesting book:", error);
-                    });
-                }
-              }}
-            >
-              Request Again
-            </Button>
-          )}
+                return_id(book.id);
+                axios
+                  .put(
+                    `${URL}/api/home/re-request/${return_id(book.id)}/`,
+                    requestBody,
+                    {
+                      headers: headers,
+                    }
+                  )
+                  .then((response) => {
+                    console.log("Request Book successful:", response.data);
+                    setRerender((prev) => !prev);
+                  })
+                  .catch((error) => {
+                    console.error("Error re-requesting book:", error);
+                  });
+              }
+            }}
+          >
+            Request Again
+          </StyledButton>
+        )}
         {status === REQUEST_STATUS.RETURN_REQUEST_STATUS && (
           <p>Return Pending...</p>
         )}
@@ -169,7 +168,7 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
           <p>Book Request Pending...</p>
         )}
       </CardActions>
-    </Card>
+    </CustomWideCard>
   );
 };
 

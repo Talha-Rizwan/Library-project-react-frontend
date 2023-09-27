@@ -1,24 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { APPROVE_TICKET, REJECT_TICKET, TICKET_STATUS } from "../../constants";
 import FormModal from "../common/Modal";
+import { CustomWideCard } from "../../emotionStyle";
 
 const TicketCard = ({ ticket, setRerender }) => (
-  <Card sx={{ minWidth: 275 }}>
+  <CustomWideCard minWidth="275">
     <CardContent>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+      <Typography variant="h6" gutterBottom>
         Ticket id: {ticket?.id}
       </Typography>
       <Typography variant="h5" component="div">
         Ticket status : {ticket?.status}
       </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        User : {ticket?.request_user}
-      </Typography>
+      <Typography>User : {ticket?.request_user}</Typography>
     </CardContent>
     {ticket?.status === TICKET_STATUS.PENDING_STATUS && (
       <CardActions>
@@ -34,7 +32,7 @@ const TicketCard = ({ ticket, setRerender }) => (
         />
       </CardActions>
     )}
-  </Card>
+  </CustomWideCard>
 );
 
 TicketCard.propTypes = {

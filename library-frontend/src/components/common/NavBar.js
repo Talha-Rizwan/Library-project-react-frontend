@@ -19,9 +19,7 @@ import {
   LIBRARIAN_ROLE,
   USER_TICKET,
 } from "../../constants";
-import { StyledNavButton, StyledTypography } from './styles'
-
-
+import { StyledNavButton, StyledTypography } from "../../styles";
 
 const NavBar = () => {
   const navigate = useNavigate();

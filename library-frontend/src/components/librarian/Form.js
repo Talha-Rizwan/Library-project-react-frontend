@@ -11,6 +11,7 @@ import axios from "axios";
 
 import { isTokenVaild, getAccessToken } from "../../utils/authUtils";
 import { ADD_BOOK, UPDATE_BOOK, APPROVE_TICKET, URL } from "../../constants";
+import { FormStyles } from "../../emotionStyle";
 
 const defaultTheme = createTheme();
 
@@ -95,14 +96,7 @@ const Form = ({ object, closeModal, setReRender, name }) => {
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <FormStyles>
           <Box
             component="form"
             noValidate
@@ -155,7 +149,7 @@ const Form = ({ object, closeModal, setReRender, name }) => {
                 />
               </Grid>
             </Grid>
-            {formErrors && <p sx={{ color: "red" }}>{formErrors}</p>}
+            {formErrors && <p>{formErrors}</p>}
             <Button
               type="submit"
               fullWidth
@@ -165,7 +159,7 @@ const Form = ({ object, closeModal, setReRender, name }) => {
               {name}
             </Button>
           </Box>
-        </Box>
+        </FormStyles>
       </Container>
     </ThemeProvider>
   );

@@ -5,16 +5,16 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
-import { Stack } from "@mui/material";
 
+import { CustomStack } from "../../emotionStyle";
 import BookCard from "./BookCard";
 
 const BookList = ({ books, userBooks, setRerender }) => (
-  <Stack
+  <CustomStack
     useFlexGap
+    spacing={{ xs: 1, sm: 2, md: 4 }}
     flexWrap="wrap"
     direction={{ xs: "column", sm: "row" }}
-    spacing={{ xs: 1, sm: 2, md: 4 }}
     justifyContent="center"
     alignItems="center"
   >
@@ -39,7 +39,7 @@ const BookList = ({ books, userBooks, setRerender }) => (
         <ListItemText primary="No books to show" />
       </ListItem>
     )}
-  </Stack>
+  </CustomStack>
 );
 
 BookList.propTypes = {

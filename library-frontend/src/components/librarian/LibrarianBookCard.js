@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
@@ -10,12 +9,13 @@ import { useNavigate } from "react-router-dom";
 import DeleteModal from "./DeleteModal";
 import FormModal from "../common/Modal";
 import { UPDATE_BOOK } from "../../constants";
+import { CardStyle } from "../../emotionStyle";
 
 const LibrarianBookCard = ({ book, setReRender }) => {
   const navigate = useNavigate();
 
   return (
-    <Card sx={{ width: 345 }}>
+    <CardStyle>
       <CardActionArea>
         <CardMedia component="img" height="140" image="/book.jpeg" alt="book" />
         <CardContent>
@@ -41,7 +41,7 @@ const LibrarianBookCard = ({ book, setReRender }) => {
 
         <DeleteModal id={book?.id} setReRender={setReRender} />
       </CardActions>
-    </Card>
+    </CardStyle>
   );
 };
 

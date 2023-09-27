@@ -14,6 +14,7 @@ import {
   isLibrarian,
 } from "../../utils/authUtils";
 import BookList from "../../components/user/BookList";
+import { CustomHeading, CustomStack } from "../../emotionStyle";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -54,14 +55,15 @@ const MyBooks = () => {
   return (
     <div>
       <Box>
-        <Stack spacing={10} direction="column" alignItems="center">
-          <Typography
-            variant="h2"
-            gutterBottom
-            sx={{ color: "blue", textDecoration: "underline" }}
-          >
+        <CustomStack
+          spacing={{ xs: 10, sm: 10, md: 10 }}
+          direction={{ xs: "column", sm: "column" }}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <CustomHeading variant="h3" gutterBottom>
             My Books
-          </Typography>
+          </CustomHeading>
           <Item>
             <Typography variant="h3" gutterBottom>
               Issued Books
@@ -107,7 +109,7 @@ const MyBooks = () => {
               setRerender={setRerender}
             />
           </Item>
-        </Stack>
+        </CustomStack>
       </Box>
     </div>
   );

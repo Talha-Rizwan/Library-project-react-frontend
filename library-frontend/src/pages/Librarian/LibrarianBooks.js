@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Stack } from "@mui/material";
 
+import { CustomStack } from "../../emotionStyle";
 import Header from "../../components/common/Header";
 import { isLibrarian, isTokenVaild } from "../../utils/authUtils";
 import LibrarianBookCard from "../../components/librarian/LibrarianBookCard";
@@ -38,11 +38,11 @@ const LibrarianBooks = () => {
         <div>
           <Header setSearchValue={setSearchValue} />
           <FormModal setReRender={setReRender} name={ADD_BOOK} />
-          <Stack
+          <CustomStack
             useFlexGap
+            spacing={{ xs: 1, sm: 2, md: 4 }}
             flexWrap="wrap"
             direction={{ xs: "column", sm: "row" }}
-            spacing={{ xs: 1, sm: 2, md: 4 }}
             justifyContent="center"
             alignItems="center"
           >
@@ -53,7 +53,7 @@ const LibrarianBooks = () => {
                 setReRender={setReRender}
               />
             ))}
-          </Stack>
+          </CustomStack>
         </div>
       )}
     </div>

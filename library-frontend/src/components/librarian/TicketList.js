@@ -5,16 +5,16 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
-import { Stack } from "@mui/material";
 
 import TicketCard from "./TicketCard";
+import { CustomStack } from "../../emotionStyle";
 
 const TicketList = ({ tickets, setRerender }) => (
-  <Stack
+  <CustomStack
     useFlexGap
+    spacing={{ xs: 1, sm: 2, md: 4 }}
     flexWrap="wrap"
     direction={{ xs: "column", sm: "row" }}
-    spacing={{ xs: 1, sm: 2, md: 4 }}
     justifyContent="center"
     alignItems="center"
   >
@@ -37,7 +37,7 @@ const TicketList = ({ tickets, setRerender }) => (
         <ListItemText primary="No tickets to show" />
       </ListItem>
     )}
-  </Stack>
+  </CustomStack>
 );
 
 TicketList.propTypes = {

@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import Stack from "@mui/material/Stack";
 import { useNavigate } from "react-router-dom";
 
 import DashboardCard from "../../components/librarian/DashboardCard";
 import { DashboardItems } from "../../constants";
 import { isLibrarian, isTokenVaild } from "../../utils/authUtils";
+import { CustomStack } from "../../emotionStyle";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -18,18 +18,22 @@ const Dashboard = () => {
   });
 
   return (
-    <Stack
-      direction="column"
+    <CustomStack
+      useFlexGap
       spacing={{ xs: 8 }}
-      sx={{ margin: "10px" }}
+      flexWrap="wrap"
+      direction={{ xs: "column", sm: "column" }}
       justifyContent="center"
       alignItems="center"
     >
       <h1>Librarian Dashboard</h1>
-      <Stack
-        direction={{ xs: "column", lg: "row" }}
+      <CustomStack
+        useFlexGap
         spacing={{ xs: 1, sm: 2, md: 4 }}
-        sx={{ margin: "10px" }}
+        flexWrap="wrap"
+        direction={{ xs: "column", sm: "row" }}
+        justifyContent="center"
+        alignItems="center"
       >
         {DashboardItems.map((item) => (
           <DashboardCard
@@ -38,8 +42,8 @@ const Dashboard = () => {
             description={item.description}
           />
         ))}
-      </Stack>
-    </Stack>
+      </CustomStack>
+    </CustomStack>
   );
 };
 export default Dashboard;

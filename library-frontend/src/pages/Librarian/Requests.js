@@ -14,6 +14,7 @@ import {
   isTokenVaild,
 } from "../../utils/authUtils";
 import { REQUEST_STATUS, URL } from "../../constants";
+import { CustomHeading } from "../../emotionStyle";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -53,13 +54,9 @@ const UserBookRequests = () => {
     <div>
       <Box>
         <Stack spacing={10} direction="column" alignItems="center">
-          <Typography
-            variant="h2"
-            gutterBottom
-            sx={{ color: "blue", textDecoration: "underline" }}
-          >
+          <CustomHeading variant="h3" gutterBottom>
             All Requests
-          </Typography>
+          </CustomHeading>
           <Item>
             <Typography variant="h3" gutterBottom>
               Pending Requests

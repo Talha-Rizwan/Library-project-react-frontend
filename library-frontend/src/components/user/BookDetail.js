@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Stack } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import { isTokenVaild } from "../../utils/authUtils";
 import { URL } from "../../constants";
+import { DetailCard, CustomStack } from "../../emotionStyle";
 
 const BookDetail = () => {
   const { id } = useParams();
@@ -32,36 +31,34 @@ const BookDetail = () => {
   });
 
   return (
-    <Stack
+    <CustomStack
       direction={{ xs: "column", sm: "row" }}
       justifyContent="center"
       alignItems="center"
     >
-      <Card sx={{ width: "50%", margin: "50px" }}>
+      <DetailCard sx={{ width: "50%", margin: "50px" }}>
         <CardMedia sx={{ height: 140 }} image="/book.jpeg" title="book" />
         {detail.id ? (
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               Name : {detail?.name}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              ID : {detail?.id}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2">ID : {detail?.id}</Typography>
+            <Typography variant="body2">
               Author : {detail?.author_name}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2">
               Publisher : {detail?.publisher_name}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2">
               Available Copies : {detail?.number_of_books}
             </Typography>
           </CardContent>
         ) : (
           <h3>Sorry the book is not found</h3>
         )}
-      </Card>
-    </Stack>
+      </DetailCard>
+    </CustomStack>
   );
 };
 

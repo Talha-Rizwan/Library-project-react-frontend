@@ -14,6 +14,7 @@ import {
   isTokenVaild,
 } from "../../utils/authUtils";
 import TicketList from "../../components/librarian/TicketList";
+import { CustomHeading } from "../../emotionStyle";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -53,13 +54,13 @@ const Tickets = () => {
     <div>
       <Box>
         <Stack spacing={10} direction="column" alignItems="center">
-          <Typography
-            variant="h2"
+          <CustomHeading
+            variant="h3"
             gutterBottom
             sx={{ color: "blue", textDecoration: "underline" }}
           >
             All Tickets
-          </Typography>
+          </CustomHeading>
           <Item>
             <Typography variant="h3" gutterBottom>
               Pending Tickets

@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Stack from "@mui/material/Stack";
 
+import { CustomStack } from "../../emotionStyle";
 import BookCard from "./BookCard";
 
 const Books = ({ books, userBooks, setRerender }) => (
-  <Stack
+  <CustomStack
     useFlexGap
+    spacing={{ xs: 1, sm: 2, md: 4 }}
     flexWrap="wrap"
     direction={{ xs: "column", sm: "row" }}
-    spacing={{ xs: 1, sm: 2, md: 4 }}
     justifyContent="center"
     alignItems="center"
   >
@@ -21,7 +21,7 @@ const Books = ({ books, userBooks, setRerender }) => (
         setRerender={setRerender}
       />
     ))}
-  </Stack>
+  </CustomStack>
 );
 
 Books.propTypes = {

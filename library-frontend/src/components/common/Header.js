@@ -1,31 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 
 import SearchBar from "./SearchBar";
+import { CustomAppBar, HeaderTypography } from "../../emotionStyle";
 
 const Header = ({ setSearchValue }) => (
   <Box sx={{ flexGrow: 1, margin: "50px" }}>
-    <AppBar position="static" sx={{ backgroundColor: "white" }}>
+    <CustomAppBar position="static">
       <Toolbar>
-        <Typography
-          variant="h6"
-          noWrap
-          component="div"
-          sx={{
-            flexGrow: 1,
-            display: { xs: "none", sm: "block" },
-            color: "black",
-          }}
-        >
+        <HeaderTypography variant="h6" noWrap component="div">
           Books
-        </Typography>
+        </HeaderTypography>
         <SearchBar setSearchValue={setSearchValue} />
       </Toolbar>
-    </AppBar>
+    </CustomAppBar>
   </Box>
 );
 

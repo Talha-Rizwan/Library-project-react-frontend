@@ -11,6 +11,7 @@ import axios from "axios";
 
 import { isTokenVaild, getAccessToken } from "../../utils/authUtils";
 import { URL } from "../../constants";
+import { FormStyles } from "../../emotionStyle";
 
 const defaultTheme = createTheme();
 
@@ -55,14 +56,7 @@ const RejectRequestForm = ({ object, closeModal, setReRender }) => {
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <FormStyles>
           <Box
             component="form"
             noValidate
@@ -81,7 +75,7 @@ const RejectRequestForm = ({ object, closeModal, setReRender }) => {
                 />
               </Grid>
             </Grid>
-            {formErrors && <p sx={{ color: "red" }}>{formErrors}</p>}
+            {formErrors && <p>{formErrors}</p>}
             <Button
               type="submit"
               fullWidth
@@ -91,7 +85,7 @@ const RejectRequestForm = ({ object, closeModal, setReRender }) => {
               Reject Request
             </Button>
           </Box>
-        </Box>
+        </FormStyles>
       </Container>
     </ThemeProvider>
   );

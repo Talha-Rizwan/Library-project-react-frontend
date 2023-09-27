@@ -9,26 +9,23 @@ import axios from "axios";
 
 import { REQUEST_STATUS, URL } from "../../constants";
 import { isTokenVaild, getAccessToken } from "../../utils/authUtils";
+import { CustomWideCard } from "../../emotionStyle";
 
 const RequestCard = ({ request, setRerender }) => (
-  <Card sx={{ minWidth: 275 }}>
+  <CustomWideCard minWidth="275">
     <CardContent>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+      <Typography variant="h6" color="text.secondary" gutterBottom>
         Request id: {request?.id}
       </Typography>
       <Typography variant="h5" component="div">
         Book Name : {request?.requested_book}
       </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        User : {request?.request_user}
-      </Typography>
+      <Typography>User : {request?.request_user}</Typography>
       <Typography variant="body2">
         Date : {request?.created.slice(0, 10)}
         <br />
       </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        Status : {request?.status}
-      </Typography>
+      <Typography>Status : {request?.status}</Typography>
     </CardContent>
     {request?.status === REQUEST_STATUS.PENDING_STATUS && (
       <CardActions>
@@ -123,7 +120,7 @@ const RequestCard = ({ request, setRerender }) => (
         </Button>
       </CardActions>
     )}
-  </Card>
+  </CustomWideCard>
 );
 
 RequestCard.propTypes = {

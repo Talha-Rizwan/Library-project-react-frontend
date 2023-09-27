@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 import { isTokenVaild, getAccessToken } from "../utils/authUtils";
 import { URL } from "../constants";
+import { FormStyles } from "../emotionStyle";
 
 const defaultTheme = createTheme();
 
@@ -72,14 +73,7 @@ const UpdateProfile = () => {
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <FormStyles>
           <Typography component="h1" variant="h5">
             Update User Profile
           </Typography>
@@ -149,7 +143,7 @@ const UpdateProfile = () => {
               Update
             </Button>
           </Box>
-        </Box>
+        </FormStyles>
       </Container>
     </ThemeProvider>
   );

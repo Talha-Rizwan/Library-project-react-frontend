@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 import { ACCESS_TOKEN, REFRESH_TOKEN, LIBRARIAN_ROLE, URL } from "../constants";
 import { isTokenVaild } from "../utils/authUtils";
+import { FormStyles } from "../emotionStyle";
 
 const defaultTheme = createTheme();
 
@@ -34,13 +35,10 @@ const SignIn = () => {
 
     try {
       if (data.get("username") && data.get("password")) {
-        const response = await axios.post(
-          `${URL}/api/user/login/`,
-          {
-            username: data.get("username"),
-            password: data.get("password"),
-          }
-        );
+        const response = await axios.post(`${URL}/api/user/login/`, {
+          username: data.get("username"),
+          password: data.get("password"),
+        });
 
         setFormErrors(response.data.message);
 
@@ -66,26 +64,14 @@ const SignIn = () => {
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <FormStyles>
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
+          <Box component="form" onSubmit={handleSubmit} noValidate>
             <TextField
               margin="normal"
               required
@@ -106,7 +92,7 @@ const SignIn = () => {
               id="password"
               autoComplete="current-password"
             />
-            {formErrors && <p sx={{ color: "red" }}>{formErrors}</p>}
+            {formErrors && <p>{formErrors}</p>}
             <Button
               type="submit"
               fullWidth
@@ -123,10 +109,10 @@ const SignIn = () => {
               </Grid>
             </Grid>
           </Box>
-        </Box>
+        </FormStyles>
       </Container>
     </ThemeProvider>
   );
-}
+};
 
 export default SignIn;

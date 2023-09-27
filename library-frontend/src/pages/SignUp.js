@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 import { isTokenVaild } from "../utils/authUtils";
 import { URL } from "../constants";
+import { FormStyles } from "../emotionStyle";
 
 const defaultTheme = createTheme();
 
@@ -37,15 +38,12 @@ const SignUp = () => {
       if (data.get("password") === "" || data.get("username") === "") {
         setFormErrors("Fill the required fields");
       } else {
-        const response = await axios.post(
-          `${URL}/api/user/user-profile/`,
-          {
-            password: data.get("password"),
-            username: data.get("username"),
-            full_name: data.get("fullname"),
-            phone: data.get("phone"),
-          }
-        );
+        const response = await axios.post(`${URL}/api/user/user-profile/`, {
+          password: data.get("password"),
+          username: data.get("username"),
+          full_name: data.get("fullname"),
+          phone: data.get("phone"),
+        });
 
         console.log("Response data:", response.data);
         alert("Account successfully created!");
@@ -60,14 +58,7 @@ const SignUp = () => {
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <FormStyles>
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
@@ -121,7 +112,7 @@ const SignUp = () => {
                 />
               </Grid>
             </Grid>
-            {formErrors && <p sx={{ color: "red" }}>{formErrors}</p>}
+            {formErrors && <p>{formErrors}</p>}
             <Button
               type="submit"
               fullWidth
@@ -138,7 +129,7 @@ const SignUp = () => {
               </Grid>
             </Grid>
           </Box>
-        </Box>
+        </FormStyles>
       </Container>
     </ThemeProvider>
   );

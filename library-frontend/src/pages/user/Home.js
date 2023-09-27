@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Stack } from "@mui/material";
 
 import Header from "../../components/common/Header";
 import {
@@ -11,6 +10,7 @@ import {
 } from "../../utils/authUtils";
 import BookCard from "../../components/user/BookCard";
 import { URL } from "../../constants";
+import { CustomStack } from "../../emotionStyle";
 
 const Home = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -60,7 +60,7 @@ const Home = () => {
       {isTokenVaild() && (
         <div>
           <Header setSearchValue={setSearchValue} />
-          <Stack
+          <CustomStack
             useFlexGap
             flexWrap="wrap"
             direction={{ xs: "column", sm: "row" }}
@@ -76,7 +76,7 @@ const Home = () => {
                 setRerender={setRerender}
               />
             ))}
-          </Stack>
+          </CustomStack>
         </div>
       )}
     </div>
