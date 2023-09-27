@@ -6,9 +6,9 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import axios from "axios";
 
-import { MODAL_STYLE } from "../../styles";
 import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
 import { URL } from "../../constants";
+import { MODAL_STYLE } from "../../emotionStyle";
 
 const DeleteModal = ({ id, setReRender }) => {
   const [open, setOpen] = useState(false);

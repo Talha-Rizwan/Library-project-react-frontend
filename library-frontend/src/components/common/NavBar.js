@@ -19,7 +19,7 @@ import {
   LIBRARIAN_ROLE,
   USER_TICKET,
 } from "../../constants";
-import { StyledNavButton, StyledTypography } from "../../styles";
+import { StyledButton, NavTypography } from "../../emotionStyle";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ const NavBar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <StyledTypography
+          <NavTypography
             variant="h6"
             noWrap
             component="a"
@@ -64,7 +64,7 @@ const NavBar = () => {
             isXs={false}
           >
             Library
-          </StyledTypography>
+          </NavTypography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -148,7 +148,7 @@ const NavBar = () => {
               </Menu>
             )}
           </Box>
-          <StyledTypography
+          <NavTypography
             variant="h5"
             noWrap
             component="a"
@@ -156,42 +156,42 @@ const NavBar = () => {
             isXs={true}
           >
             Library
-          </StyledTypography>
+          </NavTypography>
           {localStorage.getItem(LIBRARIAN_ROLE) === "true" && (
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              <StyledNavButton
+              <StyledButton buttonColor="white"
                 onClick={() => handleCloseNavMenu("/librarian/")}
               >
                 Home
-              </StyledNavButton>
-              <StyledNavButton
+              </StyledButton>
+              <StyledButton buttonColor="white"
                 onClick={() => handleCloseNavMenu("/librarian/requests")}
               >
                 Requests
-              </StyledNavButton>
-              <StyledNavButton
+              </StyledButton>
+              <StyledButton buttonColor="white"
                 onClick={() => handleCloseNavMenu("/librarian/books/")}
               >
                 Books
-              </StyledNavButton>
-              <StyledNavButton
+              </StyledButton>
+              <StyledButton buttonColor="white"
                 onClick={() => handleCloseNavMenu("/librarian/tickets/")}
               >
                 Tickets
-              </StyledNavButton>
+              </StyledButton>
             </Box>
           )}
           {localStorage.getItem(LIBRARIAN_ROLE) === "false" && (
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              <StyledNavButton onClick={() => handleCloseNavMenu("/")}>
+              <StyledButton buttonColor="white" onClick={() => handleCloseNavMenu("/")}>
                 Home
-              </StyledNavButton>
-              <StyledNavButton onClick={() => handleCloseNavMenu("/mybooks/")}>
+              </StyledButton>
+              <StyledButton buttonColor="white" onClick={() => handleCloseNavMenu("/mybooks/")}>
                 My Books
-              </StyledNavButton>
-              <StyledNavButton>
+              </StyledButton>
+              <StyledButton buttonColor="white">
                 <FormModal name={USER_TICKET} />
-              </StyledNavButton>
+              </StyledButton>
             </Box>
           )}
 

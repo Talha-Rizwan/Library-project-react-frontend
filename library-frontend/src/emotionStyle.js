@@ -80,3 +80,31 @@ export const CustomWideCard = styled(Card)`
   width: ${(props) => props.width}px;
   min-width: ${(props) => props.minWidth}px;
 `;
+
+export const NavTypography = styled(Typography)`
+  margin-right: 2px;
+  font-family: monospace;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  color: inherit;
+  text-decoration: none;
+
+  @media (max-width: 900px) {
+    display: ${(props) => (props.isXs ? "flex" : "none")};
+  }
+  @media (min-width: 900px) {
+    display: ${(props) => (props.isXs ? "none" : "flex")};
+  }
+`;
+
+export const MODAL_STYLE = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
