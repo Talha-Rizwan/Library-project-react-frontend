@@ -11,11 +11,11 @@ import Form from "../librarian/Form";
 import RejectRequestForm from "../librarian/RejectRequestForm";
 import UserTicketForm from "../user/UserTicketForm";
 import { MODAL_STYLE } from "../../emotionStyle";
+
 const FormModal = ({ object, setReRender, name }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
-
   const handleClose = () => setOpen(false);
 
   return (

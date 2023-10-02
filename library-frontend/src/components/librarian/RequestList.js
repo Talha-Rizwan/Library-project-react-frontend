@@ -18,15 +18,13 @@ const RequestList = ({ requests, setRerender }) => (
     justifyContent="center"
     alignItems="center"
   >
-    {requests?.map((request) => {
-      return (
-        <RequestCard
-          key={request?.id}
-          request={request}
-          setRerender={setRerender}
-        />
-      );
-    })}
+    {requests?.map((request) => (
+      <RequestCard
+        key={request?.id}
+        request={request}
+        setRerender={setRerender}
+      />
+    ))}
     {!requests?.length && (
       <ListItem>
         <ListItemAvatar>

@@ -18,15 +18,9 @@ const TicketList = ({ tickets, setRerender }) => (
     justifyContent="center"
     alignItems="center"
   >
-    {tickets?.map((ticket) => {
-      return (
-        <TicketCard
-          key={ticket?.id}
-          ticket={ticket}
-          setRerender={setRerender}
-        />
-      );
-    })}
+    {tickets?.map((ticket) => (
+      <TicketCard key={ticket?.id} ticket={ticket} setRerender={setRerender} />
+    ))}
     {!tickets?.length && (
       <ListItem>
         <ListItemAvatar>
