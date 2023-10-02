@@ -10,9 +10,9 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isTokenVaild() === true && isLibrarian() === "false") {
+    if (isTokenVaild() && isLibrarian() === "false") {
       navigate("/");
-    } else if (isTokenVaild() === false) {
+    } else if (!isTokenVaild()) {
       navigate("/login/");
     }
   });

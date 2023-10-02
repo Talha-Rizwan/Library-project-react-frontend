@@ -5,12 +5,9 @@ import { ACCESS_TOKEN, REFRESH_TOKEN, LIBRARIAN_ROLE, URL } from "../constants";
 
 export const refreshJwtToken = async (refreshToken) => {
   try {
-    const response = await axios.post(
-      `${URL}/api/user/refresh/`,
-      {
-        refresh: refreshToken,
-      }
-    );
+    const response = await axios.post(`${URL}/api/user/refresh/`, {
+      refresh: refreshToken,
+    });
 
     if (response.status !== 200) {
       throw new Error("Token refresh failed");

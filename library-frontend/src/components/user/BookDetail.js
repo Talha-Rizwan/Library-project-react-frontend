@@ -16,7 +16,7 @@ const BookDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isTokenVaild() === false) {
+    if (!isTokenVaild()) {
       navigate("/login/");
     }
     axios

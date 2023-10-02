@@ -23,7 +23,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isTokenVaild() === true) {
+    if (isTokenVaild()) {
       navigate("/");
     }
   });

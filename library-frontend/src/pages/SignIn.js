@@ -24,7 +24,7 @@ const SignIn = () => {
   const [formErrors, setFormErrors] = useState("");
 
   useEffect(() => {
-    if (isTokenVaild() === true) {
+    if (isTokenVaild()) {
       navigate("/");
     }
   });

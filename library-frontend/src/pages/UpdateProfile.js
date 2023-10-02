@@ -25,7 +25,7 @@ const UpdateProfile = () => {
   const [formErrors, setFormErrors] = useState("");
 
   useEffect(() => {
-    if (isTokenVaild() === false) {
+    if (!isTokenVaild()) {
       navigate("/login/");
     }
   });

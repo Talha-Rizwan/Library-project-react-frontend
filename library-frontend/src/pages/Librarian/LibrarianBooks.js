@@ -16,7 +16,7 @@ const LibrarianBooks = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isTokenVaild() === false) {
+    if (!isTokenVaild()) {
       navigate("/login/");
     } else if (isLibrarian() === "false") {
       navigate("/");

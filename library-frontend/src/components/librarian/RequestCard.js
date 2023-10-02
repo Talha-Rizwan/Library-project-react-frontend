@@ -67,13 +67,9 @@ const RequestCard = ({ request, setRerender }) => {
       };
 
       axios
-        .put(
-          `${URL}/api/home/close-request/${request?.id}/`,
-          requestBody,
-          {
-            headers: headers,
-          }
-        )
+        .put(`${URL}/api/home/close-request/${request?.id}/`, requestBody, {
+          headers: headers,
+        })
         .then((response) => {
           console.log("Request update successful: ", response.data);
           setRerender((prev) => !prev);
@@ -82,7 +78,7 @@ const RequestCard = ({ request, setRerender }) => {
           console.error("Error updating status: ", error);
         });
     }
-  }
+  };
 
   return (
     <CustomWideCard minWidth="275">
@@ -112,10 +108,7 @@ const RequestCard = ({ request, setRerender }) => {
       )}
       {request?.status === REQUEST_STATUS.RETURN_REQUEST_STATUS && (
         <CardActions>
-          <Button
-            size="small"
-            onClick={handleCloseRequest}
-          >
+          <Button size="small" onClick={handleCloseRequest}>
             Close
           </Button>
         </CardActions>
