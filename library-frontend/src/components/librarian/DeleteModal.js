@@ -15,6 +15,27 @@ const DeleteModal = ({ id, setReRender }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const handleDelete = () => {
+    if (isTokenVaild()) {
+      const headers = {
+        Authorization: `Bearer ${getAccessToken()}`,
+      };
+
+      axios
+        .delete(`${URL}/api/home/book-view-set/${id}/`, {
+          headers: headers,
+        })
+        .then((response) => {
+          console.log("delete successful: ", response.data);
+          setReRender((prev) => !prev);
+        })
+        .catch((error) => {
+          console.error("Error deleting: ", error);
+        });
+    }
+    handleClose();
+  };
+
   return (
     <div>
       <Button onClick={handleOpen}>Delete</Button>
@@ -28,30 +49,7 @@ const DeleteModal = ({ id, setReRender }) => {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Are you sure to delete?
           </Typography>
-          <Button
-            size="small"
-            color="warning"
-            onClick={() => {
-              if (isTokenVaild()) {
-                const headers = {
-                  Authorization: `Bearer ${getAccessToken()}`,
-                };
-
-                axios
-                  .delete(`${URL}/api/home/book-view-set/${id}/`, {
-                    headers: headers,
-                  })
-                  .then((response) => {
-                    console.log("delete successful: ", response.data);
-                    setReRender((prev) => !prev);
-                  })
-                  .catch((error) => {
-                    console.error("Error deleting: ", error);
-                  });
-              }
-              handleClose();
-            }}
-          >
+          <Button size="small" color="warning" onClick={handleDelete}>
             Delete
           </Button>
           <Button size="small" onClick={handleClose}>

@@ -18,17 +18,15 @@ const BookList = ({ books, userBooks, setRerender }) => (
     justifyContent="center"
     alignItems="center"
   >
-    {books?.map((book) => {
-      return (
-        <BookCard
-          key={book?.requested_book.id}
-          book={book?.requested_book}
-          BookStatus={book?.status}
-          userBooks={userBooks}
-          setRerender={setRerender}
-        />
-      );
-    })}
+    {books?.map((book) => (
+      <BookCard
+        key={book?.requested_book.id}
+        book={book?.requested_book}
+        BookStatus={book?.status}
+        userBooks={userBooks}
+        setRerender={setRerender}
+      />
+    ))}
     {!books?.length && (
       <ListItem>
         <ListItemAvatar>

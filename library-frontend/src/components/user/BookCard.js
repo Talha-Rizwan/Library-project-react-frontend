@@ -31,6 +31,82 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
     return req[0]?.id;
   };
 
+  const handleBookRequest = () => {
+    if (isTokenVaild()) {
+      const headers = {
+        Authorization: `Bearer ${getAccessToken()}`,
+      };
+      const requestBody = {
+        requested_book: book.id,
+        status: REQUEST_STATUS.PENDING_STATUS,
+      };
+
+      axios
+        .post(`${URL}/api/home/user-request/`, requestBody, {
+          headers: headers,
+        })
+        .then((response) => {
+          console.log("Request Book successful:", response.data);
+          setRerender((prev) => !prev);
+        })
+        .catch((error) => {
+          console.error("Error requesting book:", error);
+        });
+    }
+  };
+
+  const handleBookReturnRequest = () => {
+    if (isTokenVaild()) {
+      const headers = {
+        Authorization: `Bearer ${getAccessToken()}`,
+      };
+      const requestBody = {
+        status: REQUEST_STATUS.RETURN_REQUEST_STATUS,
+      };
+
+      return_id(book.id);
+      axios
+        .put(
+          `${URL}/api/home/return-request/${return_id(book.id)}/`,
+          requestBody,
+          {
+            headers: headers,
+          }
+        )
+        .then((response) => {
+          console.log("Return Book request successful:", response.data);
+          setRerender((prev) => !prev);
+        })
+        .catch((error) => {
+          console.error("Error returning book:", error);
+        });
+    }
+  };
+
+  const handleBookRequestAgain = () => {
+    if (isTokenVaild()) {
+      const headers = {
+        Authorization: `Bearer ${getAccessToken()}`,
+      };
+      const requestBody = {
+        status: "B",
+      };
+
+      return_id(book.id);
+      axios
+        .put(`${URL}/api/home/re-request/${return_id(book.id)}/`, requestBody, {
+          headers: headers,
+        })
+        .then((response) => {
+          console.log("Request Book successful:", response.data);
+          setRerender((prev) => !prev);
+        })
+        .catch((error) => {
+          console.error("Error re-requesting book:", error);
+        });
+    }
+  };
+
   return (
     <CustomWideCard width="345">
       <CardActionArea>
@@ -59,29 +135,7 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
           <StyledButton
             size="small"
             buttonColor="green"
-            onClick={() => {
-              if (isTokenVaild()) {
-                const headers = {
-                  Authorization: `Bearer ${getAccessToken()}`,
-                };
-                const requestBody = {
-                  requested_book: book.id,
-                  status: REQUEST_STATUS.PENDING_STATUS,
-                };
-
-                axios
-                  .post(`${URL}/api/home/user-request/`, requestBody, {
-                    headers: headers,
-                  })
-                  .then((response) => {
-                    console.log("Request Book successful:", response.data);
-                    setRerender((prev) => !prev);
-                  })
-                  .catch((error) => {
-                    console.error("Error requesting book:", error);
-                  });
-              }
-            }}
+            onClick={handleBookRequest}
           >
             Request Book
           </StyledButton>
@@ -91,36 +145,7 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
           <StyledButton
             size="small"
             buttonColor="orange"
-            onClick={() => {
-              if (isTokenVaild()) {
-                const headers = {
-                  Authorization: `Bearer ${getAccessToken()}`,
-                };
-                const requestBody = {
-                  status: REQUEST_STATUS.RETURN_REQUEST_STATUS,
-                };
-
-                return_id(book.id);
-                axios
-                  .put(
-                    `${URL}/api/home/return-request/${return_id(book.id)}/`,
-                    requestBody,
-                    {
-                      headers: headers,
-                    }
-                  )
-                  .then((response) => {
-                    console.log(
-                      "Return Book request successful:",
-                      response.data
-                    );
-                    setRerender((prev) => !prev);
-                  })
-                  .catch((error) => {
-                    console.error("Error returning book:", error);
-                  });
-              }
-            }}
+            onClick={handleBookReturnRequest}
           >
             Return Book
           </StyledButton>
@@ -129,33 +154,7 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
           <StyledButton
             size="small"
             buttonColor="red"
-            onClick={() => {
-              if (isTokenVaild()) {
-                const headers = {
-                  Authorization: `Bearer ${getAccessToken()}`,
-                };
-                const requestBody = {
-                  status: "B",
-                };
-
-                return_id(book.id);
-                axios
-                  .put(
-                    `${URL}/api/home/re-request/${return_id(book.id)}/`,
-                    requestBody,
-                    {
-                      headers: headers,
-                    }
-                  )
-                  .then((response) => {
-                    console.log("Request Book successful:", response.data);
-                    setRerender((prev) => !prev);
-                  })
-                  .catch((error) => {
-                    console.error("Error re-requesting book:", error);
-                  });
-              }
-            }}
+            onClick={handleBookRequestAgain}
           >
             Request Again
           </StyledButton>
