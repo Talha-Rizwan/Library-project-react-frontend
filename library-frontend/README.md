@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Library Management System - React Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Project Description
 
-In the project directory, you can run:
+The Library Management System is a web application that simplifies the management of a library's resources, borrowing, and user interactions. It consists of a Django backend, handling the core functionality and APIs, and this React frontend that provides a user-friendly interface to interact with the system.
 
-### `npm start`
+### Key Features
+#### User Roles
+Admin: The highest level of authority, responsible for managing librarians and overseeing the entire library system.
+User: Registered users who can browse books, request and return books, and manage their profiles.
+Librarian: Library staff members who can process user book requests, manage the library inventory, and address user-generated requests.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Library Functions
+Book Listing: Users can access a list of available books and search for books by name.
+Book Requests: Registered users can request books, and librarians can process these requests(approve/reject).
+Book Issuance: Users can issue up to 3 books at a time, with inventory automatically updated.
+Book Returns: Librarians can close book records when returned.
+Book Management: Librarians can add, modify, and delete books.
+Ticket Management: Librarian can approve/reject the user ticket for the new book request. (approving will add the book in the book list)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### User Management
+User Authentication: Users can sign up, log in, and update their profiles.
+User Dashboard: Users have access to a dashboard where they can view their issued books, requested books, returned books
+Book Tickets: Users can create a new book ticket not available in the inventory.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
+To get started with the frontend of the Library Management System, follow these steps:
 
-### `npm run build`
+Clone this repository to your local machine:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`git clone https://github.com/your-library-frontend-repo.git`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Navigate to the project directory:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`cd library-management-frontend`
 
-### `npm run eject`
+Install the required dependencies using npm or yarn:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+`npm install`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+You can run the application in development mode using the following command:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`npm start`
