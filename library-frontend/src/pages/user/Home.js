@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import Header from "../../components/common/Header";
 import {
@@ -13,7 +14,7 @@ import { URL } from "../../constants";
 import { CustomStack } from "../../emotionStyle";
 
 const Home = () => {
-  const [searchValue, setSearchValue] = useState("");
+  const searchValue = useSelector((state) => state.searchValue);
   const [books, setBooks] = useState();
   const [userBooks, setUserBooks] = useState();
   const [rerender, setRerender] = useState(false);
@@ -59,7 +60,7 @@ const Home = () => {
     <div>
       {isTokenVaild() && (
         <div>
-          <Header setSearchValue={setSearchValue} />
+          <Header />
           <CustomStack
             useFlexGap
             flexWrap="wrap"

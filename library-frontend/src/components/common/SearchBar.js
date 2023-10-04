@@ -1,8 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { useDispatch } from "react-redux";
+import { updateSearchAction } from "../../actions/SearchActions";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -47,30 +48,33 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const SearchBar = ({ setSearchValue }) => (
-  <Search>
-    <SearchIconWrapper>
-      <SearchIcon />
-    </SearchIconWrapper>
-    <StyledInputBase
-      sx={{
-        border: "1px solid transparent",
-        "&:hover": {
-          border: "1px solid black",
-        },
-        "&:focus": {
-          border: "1px solid black",
-        },
-      }}
-      placeholder="Search…"
-      inputProps={{ "aria-label": "search" }}
-      onChange={(e) => setSearchValue(e.target.value)}
-    />
-  </Search>
-);
+const SearchBar = () => {
+  const dispatch = useDispatch();
 
-SearchBar.propTypes = {
-  setSearchValue: PropTypes.func.isRequired,
+  const updateSearch = (items) => {
+    dispatch(updateSearchAction(items));
+  };
+  return (
+    <Search>
+      <SearchIconWrapper>
+        <SearchIcon />
+      </SearchIconWrapper>
+      <StyledInputBase
+        sx={{
+          border: "1px solid transparent",
+          "&:hover": {
+            border: "1px solid black",
+          },
+          "&:focus": {
+            border: "1px solid black",
+          },
+        }}
+        placeholder="Search…"
+        inputProps={{ "aria-label": "search" }}
+        onChange={(e) => updateSearch(e.target.value)}
+      />
+    </Search>
+  );
 };
 
 export default SearchBar;
