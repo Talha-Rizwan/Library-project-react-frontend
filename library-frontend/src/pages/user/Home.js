@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import Header from "../../components/common/Header";
 import {
@@ -12,14 +12,21 @@ import {
 import BookCard from "../../components/user/BookCard";
 import { URL } from "../../constants";
 import { CustomStack } from "../../emotionStyle";
+import { getBookAction } from "../../actions/BookActions";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
   const searchValue = useSelector((state) => state.searchValue);
+
   const [books, setBooks] = useState();
-  const [userBooks, setUserBooks] = useState();
   const [rerender, setRerender] = useState(false);
 
   const navigate = useNavigate();
+
+  const getLibraryBooks = (items) => {
+    dispatch(getBookAction(items));
+  };
 
   useEffect(() => {
     axios
@@ -43,7 +50,7 @@ const Home = () => {
           headers: headers,
         })
         .then((response) => {
-          setUserBooks(response.data);
+          getLibraryBooks(response.data);
         })
         .catch((error) => {
           console.log("Error getting data!");
@@ -70,12 +77,7 @@ const Home = () => {
             alignItems="center"
           >
             {books?.map((book) => (
-              <BookCard
-                key={book.id}
-                book={book}
-                userBooks={userBooks}
-                setRerender={setRerender}
-              />
+              <BookCard key={book.id} book={book} setRerender={setRerender} />
             ))}
           </CustomStack>
         </div>

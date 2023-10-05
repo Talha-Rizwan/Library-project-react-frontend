@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { CustomStack } from "../../emotionStyle";
 import BookCard from "./BookCard";
 
-const Books = ({ books, userBooks, setRerender }) => (
+const Books = ({ books, setRerender }) => (
   <CustomStack
     useFlexGap
     spacing={{ xs: 1, sm: 2, md: 4 }}
@@ -14,12 +14,7 @@ const Books = ({ books, userBooks, setRerender }) => (
     alignItems="center"
   >
     {books?.map((book) => (
-      <BookCard
-        key={book.id}
-        book={book}
-        userBooks={userBooks}
-        setRerender={setRerender}
-      />
+      <BookCard key={book.id} book={book} setRerender={setRerender} />
     ))}
   </CustomStack>
 );
@@ -30,7 +25,6 @@ Books.propTypes = {
       id: PropTypes.number.isRequired,
     })
   ),
-  userBooks: PropTypes.array.isRequired,
   setRerender: PropTypes.func.isRequired,
 };
 

@@ -6,15 +6,19 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 import { REQUEST_STATUS, URL } from "../../constants";
 import { getAccessToken, isTokenVaild } from "../../utils/authUtils";
 import { StyledButton, CustomWideCard } from "../../emotionStyle";
 
-const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
+const BookCard = ({ book, BookStatus, setRerender }) => {
   const navigate = useNavigate();
   let status = BookStatus;
-  const myBook = userBooks?.filter(
+
+  const LibraryBooks = useSelector((state) => state.books);
+
+  const myBook = LibraryBooks?.filter(
     (userbook) => userbook.requested_book.id === book.id
   );
 
@@ -25,7 +29,7 @@ const BookCard = ({ book, userBooks, BookStatus, setRerender }) => {
   });
 
   const return_id = (BookId) => {
-    const req = userBooks.filter(
+    const req = LibraryBooks.filter(
       (request) => request.requested_book.id === BookId
     );
     return req[0]?.id;
@@ -177,14 +181,6 @@ BookCard.propTypes = {
     author_name: PropTypes.string.isRequired,
     number_of_books: PropTypes.string,
   }),
-  userBooks: PropTypes.arrayOf(
-    PropTypes.shape({
-      requested_book: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-      }),
-      status: PropTypes.string,
-    })
-  ),
   BookStatus: PropTypes.string,
   setRerender: PropTypes.func.isRequired,
 };

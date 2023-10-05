@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { CustomStack } from "../../emotionStyle";
 import Header from "../../components/common/Header";
@@ -9,12 +9,20 @@ import LibrarianBookCard from "../../components/librarian/LibrarianBookCard";
 import FormModal from "../../components/common/Modal";
 import { ADD_BOOK, URL } from "../../constants";
 import { useNavigate } from "react-router-dom";
+import { getBookAction } from "../../actions/BookActions";
 
 const LibrarianBooks = () => {
+  const dispatch = useDispatch();
+
   const searchValue = useSelector((state) => state.searchValue);
-  const [books, setBooks] = useState();
+  const LibraryBooks = useSelector((state) => state.books);
+
   const [reRender, setReRender] = useState(false);
   const navigate = useNavigate();
+
+  const getLibraryBooks = (items) => {
+    dispatch(getBookAction(items));
+  };
 
   useEffect(() => {
     if (!isTokenVaild()) {
@@ -25,7 +33,7 @@ const LibrarianBooks = () => {
     axios
       .get(`${URL}/api/home/book-view-set/?name=${searchValue}`)
       .then((response) => {
-        setBooks(response.data);
+        getLibraryBooks(response.data);
       })
       .catch((error) => {
         console.log("Error getting data!");
@@ -47,7 +55,7 @@ const LibrarianBooks = () => {
             justifyContent="center"
             alignItems="center"
           >
-            {books?.map((book) => (
+            {LibraryBooks?.map((book) => (
               <LibrarianBookCard
                 key={book.id}
                 book={book}

@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
+import { useSelector, useDispatch } from "react-redux";
 
 import { REQUEST_STATUS, URL } from "../../constants";
 import {
@@ -14,6 +15,7 @@ import {
 } from "../../utils/authUtils";
 import BookList from "../../components/user/BookList";
 import { CustomHeading, CustomStack } from "../../emotionStyle";
+import { getBookAction } from "../../actions/BookActions";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -24,9 +26,15 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const MyBooks = () => {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
-  const [books, setBooks] = useState(null);
   const [rerender, setRerender] = useState(false);
+  const LibraryBooks = useSelector((state) => state.books);
+
+  const getLibraryBooks = (items) => {
+    dispatch(getBookAction(items));
+  };
 
   useEffect(() => {
     if (isTokenVaild() && isLibrarian() === "false") {
@@ -38,7 +46,7 @@ const MyBooks = () => {
           headers: headers,
         })
         .then((response) => {
-          setBooks(response.data);
+          getLibraryBooks(response.data);
         })
         .catch((error) => {
           console.log("Error getting data!");
@@ -68,10 +76,9 @@ const MyBooks = () => {
               Issued Books
             </Typography>
             <BookList
-              books={books?.filter(
+              books={LibraryBooks?.filter(
                 (book) => book.status === REQUEST_STATUS.APPROVED_STATUS
               )}
-              userBooks={books}
               setRerender={setRerender}
             />
           </Item>
@@ -80,7 +87,7 @@ const MyBooks = () => {
               Requested Books
             </Typography>
             <BookList
-              books={books?.filter(
+              books={LibraryBooks?.filter(
                 (book) => book.status === REQUEST_STATUS.PENDING_STATUS
               )}
               setRerender={setRerender}
@@ -91,7 +98,7 @@ const MyBooks = () => {
               Return Pending Books
             </Typography>
             <BookList
-              books={books?.filter(
+              books={LibraryBooks?.filter(
                 (book) => book.status === REQUEST_STATUS.RETURN_REQUEST_STATUS
               )}
               setRerender={setRerender}
@@ -102,7 +109,7 @@ const MyBooks = () => {
               Returned Books
             </Typography>
             <BookList
-              books={books?.filter(
+              books={LibraryBooks?.filter(
                 (book) => book.status === REQUEST_STATUS.CLOSED_STATUS
               )}
               setRerender={setRerender}

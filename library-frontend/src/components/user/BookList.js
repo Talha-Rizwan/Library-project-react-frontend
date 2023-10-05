@@ -9,7 +9,7 @@ import AcUnitIcon from "@mui/icons-material/AcUnit";
 import { CustomStack } from "../../emotionStyle";
 import BookCard from "./BookCard";
 
-const BookList = ({ books, userBooks, setRerender }) => (
+const BookList = ({ books, setRerender }) => (
   <CustomStack
     useFlexGap
     spacing={{ xs: 1, sm: 2, md: 4 }}
@@ -23,7 +23,6 @@ const BookList = ({ books, userBooks, setRerender }) => (
         key={book?.requested_book.id}
         book={book?.requested_book}
         BookStatus={book?.status}
-        userBooks={userBooks}
         setRerender={setRerender}
       />
     ))}
@@ -47,7 +46,6 @@ BookList.propTypes = {
       status: PropTypes.string,
     })
   ),
-  userBooks: PropTypes.array,
   setRerender: PropTypes.func.isRequired,
 };
 
